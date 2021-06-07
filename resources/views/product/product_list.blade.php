@@ -38,6 +38,7 @@
     @foreach ($products as $product)
     <div class = "list-group-item">
         <div class = "row">
+            
             <div class = "col-sm-1">番号：{{ $product->id}} </div>
             <div class = "col-sm-2"><a href="/product/{{ $product->id}}"  >
                 {{ $product->name}}
