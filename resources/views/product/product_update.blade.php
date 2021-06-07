@@ -8,7 +8,7 @@
         <button type="submit" class="btn btn-secondary m-1" onclick="location.href='/product/product_list'" >商品一覧へ</button>
     </div>
         <div class = "list-group-item">
-        <form action="{{route('product_update')}}" method="POST">
+        <form action="{{route('product_update')}}" method="POST" enctype="multipart/form-data" onsubmit="return checkSubmit()">
             @csrf
             <div>
                 
@@ -70,6 +70,18 @@
                         </div>
                     @endif
                 </div>
+                <div class = "form-group ">
+                    <label for="image">画像変更</label>
+                        <div><img src="/uploads/{{$product->image}}"width ="100" alt=""></div>
+                            <div class="input-group">
+                                <label class="input-group-btn">
+                                    <span class="btn btn-primary">
+                                        Choose File<input type="file" style="display:none" class="uploadfile" name ="uploadfile">
+                                    </span>
+                                </label>
+                                <input type="text" class="form-control" readonly="">
+                            </div>
+                </div>
                 <div >登録日:{{ $product->created_at}}:</div>
                 <div >更新日:{{ $product->updated_at}}</div>
                 <div class = "col-sm-2">
@@ -78,7 +90,6 @@
                 </div>
             </div>
         </div>
-            <!-- <a href="/product/{{ $product->id}}"  >{{ $product->name}} -->
         </form>
 
         <form action="" method="post">
@@ -88,4 +99,32 @@
         </form>
         </div>
 </div>
+<script>
+    function checkSubmit(){
+        if(window.confirm('変更してよろしいですか？')){
+            return true;
+        }else{
+            return false;
+            }
+    }
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+    $(document).on('change', ':file', function() {
+        var input = $(this),
+        numFiles = input.get(0).files ? input.get(0).files.length : 1,
+        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+        input.parent().parent().next(':text').val(label);
+
+        var files = !!this.files ? this.files : [];
+        if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
+        if (/^image/.test( files[0].type)){ // only image file
+            var reader = new FileReader(); // instance of the FileReader
+            reader.readAsDataURL(files[0]); // read the local file
+            reader.onloadend = function(){ // set image data as background of div
+                input.parent().parent().parent().prev('.imagePreview').css("background-image", "url("+this.result+")");
+            }
+        }
+    });
+    </script>
 @endsection

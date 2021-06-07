@@ -94,22 +94,22 @@ class ProductController extends Controller
         $id= $request->id;
         $pdata = product::find($id);
         $fdata = $request->all();
-
+        //dd($file = $request->uploadfile);
         unset($fdata['_token']);
-        if($file = $request->uploadfile){
+        if($request->uploadfile != NULL){
+            $file = $request->uploadfile;
             $file_name = time() . $file->getClientOriginalName();
             $target_path = public_path('uploads/');
             $file->move($target_path, $file_name);
+            $fdata = $fdata + array('image'=>$file_name);
         }else{
             unset($fdata['uploadfile']);
         }
-        $product = $product + array('image'=>$file_name);
-        dd($fdata);
-
+        //dd($fdata);
         //$user->fill($request->all())->save();
         $pdata->fill($fdata)->save();
         //product::update($id);
-     return redirect('product/product_list');
+     return redirect('product/'.$id);
 
     }
     //削除
