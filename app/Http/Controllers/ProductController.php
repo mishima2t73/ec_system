@@ -40,7 +40,7 @@ class ProductController extends Controller
         return view('product/product_list',compact("products","sortname","order"));
     }
 
-    //data @param int $id 詳細
+    //data @param int $id 商品詳細
     public function product_data($id)
     {
         $product_data = product::find($id);
@@ -57,6 +57,18 @@ class ProductController extends Controller
     public function exe_store(ProductRequest $request)
     {
         $product = $request->all();
+        if($file = $request->uploadfile){
+            $file_name = time() . $file->getClientOriginalName();
+            $target_path = public_path('uploads/');
+            $file->move($target_path, $file_name);
+        }else{
+            $file_name = "";
+        }
+        $product = $product + array('image'=>$file_name);
+        //dd($file);
+        //dd($product);
+        //$product->image = $file_name;
+
         \DB::beginTransaction();
         //try{
             product::create($product);
@@ -82,7 +94,17 @@ class ProductController extends Controller
         $id= $request->id;
         $pdata = product::find($id);
         $fdata = $request->all();
+
         unset($fdata['_token']);
+        if($file = $request->uploadfile){
+            $file_name = time() . $file->getClientOriginalName();
+            $target_path = public_path('uploads/');
+            $file->move($target_path, $file_name);
+        }else{
+            unset($fdata['uploadfile']);
+        }
+        $product = $product + array('image'=>$file_name);
+        dd($fdata);
 
         //$user->fill($request->all())->save();
         $pdata->fill($fdata)->save();

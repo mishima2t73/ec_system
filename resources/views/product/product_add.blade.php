@@ -179,21 +179,15 @@
         </div>
         <div class = "form-group ">
             <label for="image">画像選択（仮）</label>
-            <div class="custom-file">
-                <input type="file" class="custom-file-input" id="image" name ="image" aria-describedby="inputGroupFileAddon01">
-                <label class="custom-file-label" for="inputGroupFile">Choose file</label>
-              </div>
-        </div>
-        <div class="imagePreview"></div>
                     <div class="input-group">
                         <label class="input-group-btn">
                             <span class="btn btn-primary">
-                                Choose File<input type="file" style="display:none" class="uploadFile">
+                                Choose File<input type="file" style="display:none" class="uploadfile" name ="uploadfile">
                             </span>
                         </label>
                         <input type="text" class="form-control" readonly="">
                     </div>
-    
+        </div>
           <input type="hidden" name = "staff_id" value="{{Auth::id()}}">
         <div>
             <div>

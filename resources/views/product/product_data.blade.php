@@ -5,7 +5,7 @@
     <h2>商品詳細</h2>
         <div class = "list-group-item">
             <div>
-                <div><img src="src='upload'"width ="100" alt=""></div>
+                <div><img src="/uploads/{{$product->image}}"width ="100" alt=""></div>
             <div >商品番号：{{ $product->id}} </div>
             <div >{{ $product->name}}</div>
             <div >メーカー:{{ $product->maker}}</div>
@@ -26,7 +26,7 @@
         </div>
         <div class = "row ">
             <!-- <a href="/product/{{ $product->id}}"  >{{ $product->name}} -->
-            <div class = "col-sm-2"><button type="submit" class="btn btn-secondary m-1" onclick="location.href='/product/{{$product->id}}/edit'">変更</button></div>
+            <div class = "col-sm-2"><button type="submit" class="btn btn-secondary m-1" onclick="location.href='/product/update/{{$product->id}}'">変更</button></div>
             
             <div class = "col-sm-2"><button type="submit" class="btn btn-secondary m-1" onclick="">削除</button></div>
         </div>
