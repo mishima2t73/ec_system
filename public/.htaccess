@@ -1,0 +1,17 @@
+<ifmodule mod_rewrite.c="">
+        <ifmodule mod_negotiation.c="">
+                Options -MultiViews
+        </ifmodule>
+ 
+        RewriteEngine On
+ 
+        # 最後がスラッシュのURLでアクセスされた場合のリダイレクト
+        RewriteCond %{REQUEST_URI} !^/wordpress.*$
+        RewriteRule ^(.*)/$ /$1 [L,R=301]
+ 
+        # フロントコントローラーへの処理
+        RewriteCond %{REQUEST_URI} !^/wordpress.*$
+        RewriteCond %{REQUEST_FILENAME} !-d
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteRule ^ index.php [L]
+</ifmodule>

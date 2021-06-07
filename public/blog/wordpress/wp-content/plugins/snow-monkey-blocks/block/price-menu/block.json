@@ -1,0 +1,25 @@
+{
+  "apiVersion": 2,
+  "name": "snow-monkey-blocks/price-menu",
+	"title": "Price menu",
+	"description": "Display the menu name and the price.",
+  "category": "smb",
+  "example": {
+    "innerBlocks": [
+      {
+        "name": "snow-monkey-blocks/price-menu--item",
+        "attributes": {
+          "title": "Lorem ipsum",
+          "price": "$100"
+        }
+      },
+      {
+        "name": "snow-monkey-blocks/price-menu--item",
+        "attributes": {
+          "title": "dolor sit amet",
+          "price": "$200"
+        }
+      }
+    ]
+  }
+}

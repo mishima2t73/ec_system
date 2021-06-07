@@ -1,0 +1,15 @@
+@charset 'utf-8';
+
+@import '../../src/css/core/block';
+
+.editor-styles-wrapper {
+  @import 'style';
+
+  .smb-pricing-table {
+    .block-list-appender {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+}

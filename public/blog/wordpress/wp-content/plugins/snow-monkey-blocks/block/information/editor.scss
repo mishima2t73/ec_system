@@ -1,0 +1,11 @@
+.editor-styles-wrapper {
+  @import 'style';
+
+  .smb-information {
+    &.is-style-border {
+      .smb-information__item:not(:first-child) {
+        margin-top: 2px;
+      }
+    }
+  }
+}

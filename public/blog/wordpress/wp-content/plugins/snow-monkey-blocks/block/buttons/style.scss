@@ -1,0 +1,51 @@
+@charset 'utf-8';
+
+@import '../../src/css/core/block';
+
+.smb-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  @include _margin-bottom(-.5);
+
+  &.has-text-align-left,
+  &.is-content-justification-left {
+    justify-content: flex-start;
+  }
+
+  &.has-text-align-center,
+  &.is-content-justification-center {
+    justify-content: center;
+
+    > .smb-btn-wrapper {
+      @include _margin-right(.25);
+      @include _margin-left(.25);
+    }
+  }
+
+  &.has-text-align-right,
+  &.is-content-justification-right {
+    justify-content: flex-end;
+
+    > .smb-btn-wrapper {
+      margin-right: 0;
+      @include _margin-left(.5);
+    }
+  }
+
+  > .smb-btn-wrapper {
+    flex: 0 1 auto;
+    margin: 0;
+    @include _margin-right(.5);
+    @include _padding-bottom(.5, true);
+  }
+
+  > .smb-btn-wrapper--more-wider {
+    @include _media-max(sm) {
+      flex: 1 1 auto;
+    }
+  }
+
+  > .smb-btn-wrapper--full {
+    flex: 1 1 auto;
+  }
+}
