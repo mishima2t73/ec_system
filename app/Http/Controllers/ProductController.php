@@ -35,7 +35,7 @@ class ProductController extends Controller
         
 
         //$products = product::all();
-        $products = product::orderBy($sortname,$order)->paginate(5);
+        $products = product::orderBy($sortname,$order)->paginate(8);
         //$productspage = product::orderBy($sortname,'asc')->paginate(5);
         return view('product/product_list',compact("products","sortname","order"));
     }

@@ -3,6 +3,9 @@
 @section('content')
 <div class ="container">
     <h2>商品詳細</h2>
+    <div class = "col-sm-2">
+        <button type="submit" class="btn btn-secondary m-1" onclick="location.href='/product/product_list'" >商品一覧へ</button>
+    </div>
         <div class = "list-group-item">
             <div>
                 <div><img src="/uploads/{{$product->image}}"width ="100" alt=""></div>
