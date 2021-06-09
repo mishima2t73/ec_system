@@ -1,1 +1,4 @@
 Laravel Framework 6.20.27
+
+一部だけマイグレーションしたい時
+php artisan migrate:refresh  --step=1 --path=/database/migrations/ファイル名
