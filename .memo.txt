@@ -2,3 +2,7 @@ Laravel Framework 6.20.27
 
 一部だけマイグレーションしたい時
 php artisan migrate:refresh  --step=1 --path=/database/migrations/ファイル名
+
+会員ログインカート注文　商品表示、カート一覧表示、削除
+管理スタッフや商品の登録表示削除更新　注文一覧
+
