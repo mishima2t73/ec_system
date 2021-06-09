@@ -1,4 +1,4 @@
-@extends('layouts.sho')
+@extends('layouts.shop')
  
 
 

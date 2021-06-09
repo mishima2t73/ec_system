@@ -1,0 +1,14 @@
+ @if ($c == 2 || $c == 5 ||$c == 8 )
+                </div>
+            @endif
+            @if ($c == count($products)-1 && count($products)-1 % 3 != 0)
+                @while 
+                <div class="col align-items-center bg-white" >
+                    <div class="image-col"><img src="/uploads/NO-IMAGE.png"  alt=""></div>    
+                @endwhile
+                </div>
+            @endif
+            
+        @php
+            $c=$c+1;
+        @endphp
