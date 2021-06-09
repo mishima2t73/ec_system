@@ -72,7 +72,7 @@ Route::post('/product/delete/{id}','ProductController@product_delete')->name('pr
 });
 
 //スタッフ一覧
-Route::get('/staff_list','StaffsController@staff_list')->name('staff_list');
+Route::get('staff/staff_list','StaffsController@staff_list')->name('staff_list');
 
 //test
 Route::get('/test', 'ProductController@wptest')->name('wptest');

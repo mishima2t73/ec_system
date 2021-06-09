@@ -42,7 +42,7 @@
                     <h3 class ="h3 mt-3">スタッフ</h3>
                     <div class="row">
                         <div class="col-sm-2" style="padding-right: 10px">
-                            <button type="submit" class="btn btn-secondary m-1"  onclick="location.href='{{ route('register') }}'">
+                            <button type="submit" class="btn btn-secondary m-1"  onclick="location.href='{{ route('staff_list') }}'">
                                 スタッフ一覧
                             </button>
                         </div>

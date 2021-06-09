@@ -7,6 +7,7 @@ use App\Http\Requests\ProductRequest;
 
 class ProductController extends Controller
 {
+    //ログイン確認処理？要確認
     public function __construct()
     {
         $this->middleware('auth');
