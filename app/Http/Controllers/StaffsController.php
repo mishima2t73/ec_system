@@ -12,11 +12,7 @@ class StaffsController extends Controller
         $this->middleware('auth');
         
     }
-    public function index()
-    {
-        //$id = Auth::id();
-        return view('home');
-    }
+
 
     public function staff_list(Request $request){
         //$sortname = "created_at";

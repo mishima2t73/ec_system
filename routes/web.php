@@ -73,11 +73,13 @@ Route::post('/product/delete/{id}','ProductController@product_delete')->name('pr
 
 //スタッフ一覧
 Route::get('staff/staff_list','StaffsController@staff_list')->name('staff_list');
+//配送設定一覧
+Route::get('delivery/setting','AdminContoroller@show_setting')->name('setting');
 
 //test
 Route::get('/test', 'ProductController@wptest')->name('wptest');
 
-//ショップ画面
+//消費者向けショップ画面----------------------------------
 //top
 Route::get('/top','ShopController@topview')->name('top');
 
