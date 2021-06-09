@@ -30,7 +30,6 @@
             </ul>
             </div>
         </div>
-    </div>
     <div class = "col">
     <h2>商品一覧</h2>
     <button type="submit" class="btn btn-secondary m-1" onclick="location.href='/product/product_add'">
