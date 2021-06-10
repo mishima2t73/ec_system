@@ -47,7 +47,6 @@
                                 <a class="dropdown-item" href="#">dell</a>
                                 <a class="dropdown-item" href="#">Panasonic</a>
                                 <a class="dropdown-item" href="#">Dynabook</a>
-                                <div class="dropdown-divider"></div>
                                 
                             </div>
                         </li>
@@ -59,7 +58,6 @@
                                 <a class="dropdown-item" href="#">～2万</a>
                                 <a class="dropdown-item" href="#">3万～10万</a>
                                 <a class="dropdown-item" href="#">10万～</a>
-                                <div class="dropdown-divider"></div>
                                 
                             </div>
                         </li>
@@ -72,7 +70,6 @@
                                 <a class="dropdown-item" href="#">13～14</a>
                                 <a class="dropdown-item" href="#">15～15.6</a>
                                 <a class="dropdown-item" href="#">17～</a>
-                                <div class="dropdown-divider"></div>
                                 
                             </div>
                         </li>
@@ -85,9 +82,9 @@
                                 <a class="dropdown-item" href="#">Core i3</a>
                                 <a class="dropdown-item" href="#">Core i5</a>
                                 <a class="dropdown-item" href="#">Core i7</a>
+                                <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">Ryzen</a>
                                 
-                                <div class="dropdown-divider"></div>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -99,7 +96,7 @@
                                 <a class="dropdown-item" href="#">128GB～256GB</a>
                                 <a class="dropdown-item" href="#">256GB～480GB</a>
                                 <a class="dropdown-item" href="#">480GB～</a>
-                                <div class="dropdown-divider"></div>
+                                
                             </div>
                         </li>
                     </ul>
@@ -153,16 +150,17 @@
             @yield('content')
         </main>
     
-    <footer class="footer bg-white border-top"　style = "padding:20px;">
-        <div class= "container ">
-            <div class = "row  ">
-                <div class="col-3 text-center ">会社概要</div>
-                <div class ="col-3 text-center">お問い合わせ</div>
-                <div class = "col-3 text-center">送料</div>
-                <div class = "col-3 text-center">支払方法</div>
-            </div>
-        </div>
-    </footer>
+
 </div>
+<footer class="footer bg-white border-top"　style = "padding:20px;">
+    <div class= "container ">
+        <div class = "row  ">
+            <div class="col-3 text-center ">会社概要</div>
+            <div class ="col-3 text-center">お問い合わせ</div>
+            <div class = "col-3 text-center">送料</div>
+            <div class = "col-3 text-center">支払方法</div>
+        </div>
+    </div>
+</footer>
 </body>
 </html>
