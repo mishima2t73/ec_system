@@ -37,5 +37,31 @@ class ShopController extends Controller
             'product'=>$product_data
         ]);
     }
+    //cart in 
+    public function shop_cartin(Request $request){
+        $session_productid = $request->id;
+        $session_productquantity = $request->quantity;
+        $cartdata = array();
+        //$search = in_array($request->session('id'=>$id));
+        $cartdata = compact("session_productid",'session_productquantity');
+        /*
+        if ($request->session()->has('id')){
+            return view('shop/product{$id}',['error'=>'既にこの商品はカートに入っています。']);
+        }else{
+            $request->session()->put(['cartlist',$cartdata]);
+        }
+        */
+        $request->session()->put(['cartlist',$cartdata]);
+        //dd($request->session()->get('cartlist'));
+        //dd($request->session()->all());
+        //return view('shop/shop_product_data',['quantity'=>$session_productquantity]);
+        return redirect('/shop/product/'.$session_productid);
+
+
+        
+    }
+    public function shop_cartshow(Request $request){
+       // $request->settion()
+    }
 
 }

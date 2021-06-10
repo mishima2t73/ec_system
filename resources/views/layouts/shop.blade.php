@@ -152,16 +152,17 @@
         <main class="py-4">
             @yield('content')
         </main>
-    </div>
-    <footer class="footer bg-white">
-    <div class= "container ">
-        <div class = "row ">
-            <div class="col-3 text-center"><p>会社概要</p></div>
-            <div class ="col-3 text-center">お問い合わせ</div>
-            <div class = "col-3 text-center">送料</div>
-            <div class = "col-3 text-center">支払方法</div>
+    
+    <footer class="footer bg-white border-top"　style = "padding:20px;">
+        <div class= "container ">
+            <div class = "row  ">
+                <div class="col-3 text-center ">会社概要</div>
+                <div class ="col-3 text-center">お問い合わせ</div>
+                <div class = "col-3 text-center">送料</div>
+                <div class = "col-3 text-center">支払方法</div>
+            </div>
         </div>
     </footer>
-    </div>
+</div>
 </body>
 </html>

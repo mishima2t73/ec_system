@@ -85,4 +85,6 @@ Route::get('/top','ShopController@topview')->name('top');
 
 //商品詳細
 Route::get('shop/product/{id}','ShopController@showproduct_data')->name('showproduct_data');
+Route::post('shop/cartin','ShopController@shop_cartin')->name('shop_cartin');
+
  
