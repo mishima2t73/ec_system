@@ -40,17 +40,17 @@
             @endif
             <div class="col align-items-center bg-white" >
                     @if ($product->image == 0)
-                    <a href= "/product/{{ $product->id}}">
+                    <a href= "shop/product/{{ $product->id}}">
                         <div class="image-col"><img src="/uploads/NO-IMAGE.png"  alt=""></div>
                     </a>    
                     @else
-                    <a href= "/product/{{ $product->id}}">
+                    <a href= "shop/product/{{ $product->id}}">
                         <div class="image-col"><img src="/uploads/{{$product->image}}" alt=""></div>
                     </a>
                         
                     
                     @endif
-                    <div ><a href= "/product/{{ $product->id}}">{{ $product->name}}</a></div>
+                    <div ><a href= "shop/product/{{ $product->id}}">{{ $product->name}}</a></div>
                     <div>￥{{ $product->price}}</div>
                     <div>{{ $product->cpu}}</div>
             </div>
@@ -61,12 +61,8 @@
             $c=$c+1;
         @endphp
         @endforeach
-        <div class = "row ">
-            <div class = "col-md-5 offset-md-5 align-items-center">
-                {{$products->appends(['sort'=>$sortname,'order'=>$order])->links()}}
-            </div>
-        </div>
+    </div>
     </div>
 </div>
-</div>
+
 @endsection

@@ -18,13 +18,15 @@
     <link href="{{ asset('css/shoptop.css') }}" rel="stylesheet">
 
     <!-- Styles -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                
+                <a class="navbar-brand" href="{{ url('/top') }}">
                     {{ config('app.name', '@sol-management') }}
                 </a>
                 
@@ -44,6 +46,7 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="#">dell</a>
                                 <a class="dropdown-item" href="#">Panasonic</a>
+                                <a class="dropdown-item" href="#">Dynabook</a>
                                 <div class="dropdown-divider"></div>
                                 
                             </div>
@@ -53,8 +56,9 @@
                                 価格
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">～2万</a>
+                                <a class="dropdown-item" href="#">3万～10万</a>
+                                <a class="dropdown-item" href="#">10万～</a>
                                 <div class="dropdown-divider"></div>
                                 
                             </div>
@@ -64,8 +68,10 @@
                                 画面サイズ
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">11～12.5</a>
+                                <a class="dropdown-item" href="#">13～14</a>
+                                <a class="dropdown-item" href="#">15～15.6</a>
+                                <a class="dropdown-item" href="#">17～</a>
                                 <div class="dropdown-divider"></div>
                                 
                             </div>
@@ -76,8 +82,11 @@
                                 CPU
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Core i3</a>
+                                <a class="dropdown-item" href="#">Core i5</a>
+                                <a class="dropdown-item" href="#">Core i7</a>
+                                <a class="dropdown-item" href="#">Ryzen</a>
+                                
                                 <div class="dropdown-divider"></div>
                             </div>
                         </li>
@@ -86,8 +95,10 @@
                                 HDD/SSD
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">～128GB</a>
+                                <a class="dropdown-item" href="#">128GB～256GB</a>
+                                <a class="dropdown-item" href="#">256GB～480GB</a>
+                                <a class="dropdown-item" href="#">480GB～</a>
                                 <div class="dropdown-divider"></div>
                             </div>
                         </li>
@@ -97,6 +108,9 @@
                     </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        <a class="nav-link" href="#"><span class="material-icons-outlined">
+                            <img src="/icon/outline_shopping_cart_black_24dp.png" alt="">
+                            </span></a>
                         <a class="nav-link" href="{{ url('/home') }}">
                             home
                         </a>
@@ -138,6 +152,16 @@
         <main class="py-4">
             @yield('content')
         </main>
+    </div>
+    <footer class="footer bg-white">
+    <div class= "container ">
+        <div class = "row ">
+            <div class="col-3 text-center"><p>会社概要</p></div>
+            <div class ="col-3 text-center">お問い合わせ</div>
+            <div class = "col-3 text-center">送料</div>
+            <div class = "col-3 text-center">支払方法</div>
+        </div>
+    </footer>
     </div>
 </body>
 </html>
