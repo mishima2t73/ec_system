@@ -113,7 +113,7 @@ class ProductController extends Controller
      return redirect('product/'.$id);
 
     }
-    //削除
+    //delete
     public function product_delete($id){
         product::destroy($id);
         return redirect('/product/product_list');

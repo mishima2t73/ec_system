@@ -37,31 +37,43 @@ class ShopController extends Controller
             'product'=>$product_data
         ]);
     }
-    //cart in 
-    public function shop_cartin(Request $request){
-        $session_productid = $request->id;
-        $session_productquantity = $request->quantity;
-        $cartdata = [session()->get('cartlist')];
-        //$search = in_array($request->session('id'=>$id));
-        $cartdata[] = [$session_productid,$session_productquantity];
-        //dd($cartdata);
-        /*
+     /*
         if ($request->session()->has('id')){
             return view('shop/product{$id}',['error'=>'既にこの商品はカートに入っています。']);
         }else{
             $request->session()->put(['cartlist',$cartdata]);
         }
         */
-        $request->session()->put('cartdata',$cartdata);
+    //cart in 
+    public function shop_cartin(Request $request){
+        $session_productid = $request->id;
+        $session_productquantity = $request->quantity;
+        //$cartdata = [session()->get('cartlist')];
+        //$search = in_array($request->session('id'=>$id));
+        $cartdata = compact("session_productid","session_productquantity");
+       //'cartdata',
+        $request->session()->push('cartlist',$cartdata);
         //dd($request->session()->get('cartlist'));
         //dd($request->session()->all());
         return redirect('/shop/product/'.$session_productid);        
     }
+    public function cart_delete_single($id){
+        //product::destroy($id);
+        return redirect('/shop/cart');
+    }
+    public function cart_delete($id){
+        session()->forget('cartlist');
+        return redirect('/shop/cart');
+    }
+
     public function shop_cartshow(Request $request){
         dd($request->session()->all());
-        $cart= $request->session()->get('cartdata');
+        $cartdata= $request->session()->get('cartlist');
+        $SessionProductId = array_column($cartData, 'SessionProductId');
+        $SessionProductQuantity = array_column($cartData, 'SessionProductQuantity');
         //dd($cart);
        //$products = product::find();
+       return view('/shop/cart',["cart"=>$cart]);
     }
 
 }
