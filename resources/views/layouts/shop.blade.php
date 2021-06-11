@@ -38,7 +38,9 @@
                     <!-- Left Side Of Navbar -->
 
                     <ul class = "navbar-nav ml-auto">
-                        <li class = "nav-link">商品一覧</li>
+                        <li class = "nav-item"> 
+                            <a class = "nav-link" href="{{ url('/top') }}">商品一覧</a>
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 メーカー
@@ -105,8 +107,8 @@
                     </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        <a class="nav-link" href="#"><span class="material-icons-outlined">
-                            <img src="/icon/outline_shopping_cart_black_24dp.png" alt="">
+                        <a class="nav-link" href=""><span class="material-icons-outlined">
+                            <img src="/icon/outline_shopping_cart_black_24dp.png" alt="cart">
                             </span></a>
                         <a class="nav-link" href="{{ url('/home') }}">
                             home
@@ -152,7 +154,8 @@
     
 
 </div>
-<footer class="footer bg-white border-top"　style = "padding:20px;">
+<!--
+<footer class="footer bg-white border-top"　>
     <div class= "container ">
         <div class = "row  ">
             <div class="col-3 text-center ">会社概要</div>
@@ -162,5 +165,6 @@
         </div>
     </div>
 </footer>
+-->
 </body>
 </html>

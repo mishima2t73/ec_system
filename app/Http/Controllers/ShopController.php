@@ -41,9 +41,10 @@ class ShopController extends Controller
     public function shop_cartin(Request $request){
         $session_productid = $request->id;
         $session_productquantity = $request->quantity;
-        $cartdata = array();
+        $cartdata = [session()->get('cartlist')];
         //$search = in_array($request->session('id'=>$id));
-        $cartdata = compact("session_productid",'session_productquantity');
+        $cartdata[] = [$session_productid,$session_productquantity];
+        //dd($cartdata);
         /*
         if ($request->session()->has('id')){
             return view('shop/product{$id}',['error'=>'既にこの商品はカートに入っています。']);
@@ -51,17 +52,16 @@ class ShopController extends Controller
             $request->session()->put(['cartlist',$cartdata]);
         }
         */
-        $request->session()->put(['cartlist',$cartdata]);
+        $request->session()->put('cartdata',$cartdata);
         //dd($request->session()->get('cartlist'));
         //dd($request->session()->all());
-        //return view('shop/shop_product_data',['quantity'=>$session_productquantity]);
-        return redirect('/shop/product/'.$session_productid);
-
-
-        
+        return redirect('/shop/product/'.$session_productid);        
     }
     public function shop_cartshow(Request $request){
-       // $request->settion()
+        dd($request->session()->all());
+        $cart= $request->session()->get('cartdata');
+        //dd($cart);
+       //$products = product::find();
     }
 
 }

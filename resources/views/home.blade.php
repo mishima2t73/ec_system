@@ -73,7 +73,7 @@
                             </div>
                         </div>
                         <div class = "col">
-                            <div>calender表示したい</div>
+                            <div>calender</div>
                         </div>
                     </div>
                 </div>

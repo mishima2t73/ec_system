@@ -44,7 +44,6 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="#">商品一覧</a>
                                 <a class="dropdown-item" href="#">商品登録</a>
-                                <div class="dropdown-divider"></div>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -54,7 +53,6 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="#">注文詳細</a>
                                 <a class="dropdown-item" href="#">売上分析</a>
-                                <div class="dropdown-divider"></div>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -63,7 +61,6 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="#">スタッフ一覧</a>
                                 <a class="dropdown-item" href="#">スタッフ登録</a>
-                                <div class="dropdown-divider"></div>
                             </div>
                         </li>
                     </ul>
