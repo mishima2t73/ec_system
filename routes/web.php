@@ -20,7 +20,13 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Auth::routes();
-
+/*//決済ボタン表示ページ
+Route::get('/','settlementController@index')->name('index');
+//Stripeの処理
+Route::get('/settlement','settlementController@settlement')->name('settlement');
+//決済完了ページ
+Route::get('/complete','settlementController@complete')->name('complete');
+*/
 Route::get('/home', 'ProductController@index')->name('home');
 
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
