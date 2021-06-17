@@ -23,7 +23,10 @@
                             <div class = "col-sm-4">今月</div><div class = "col-sm-4">個数：32</div><div class="col-sm-4">金額：142000</div>
                         </div>
                         <button type="submit" class="btn btn-secondary m-1" onclick="location.href=''">
-                            売上詳細
+                            注文詳細
+                        </button>
+                        <button type="submit" class="btn btn-secondary m-1" onclick="location.href=''">
+                            売上分析
                         </button>
                     </div>
                     <div class="row">
@@ -70,7 +73,7 @@
                             </div>
                         </div>
                         <div class = "col">
-                            <div>calender表示したい</div>
+                            <div>calender</div>
                         </div>
                     </div>
                 </div>

@@ -18,13 +18,15 @@
     <link href="{{ asset('css/shoptop.css') }}" rel="stylesheet">
 
     <!-- Styles -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                
+                <a class="navbar-brand" href="{{ url('/top') }}">
                     {{ config('app.name', '@sol-management') }}
                 </a>
                 
@@ -36,7 +38,9 @@
                     <!-- Left Side Of Navbar -->
 
                     <ul class = "navbar-nav ml-auto">
-                        <li class = "nav-link">商品一覧</li>
+                        <li class = "nav-item"> 
+                            <a class = "nav-link" href="{{ url('/top') }}">商品一覧</a>
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 メーカー
@@ -44,7 +48,7 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="#">dell</a>
                                 <a class="dropdown-item" href="#">Panasonic</a>
-                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Dynabook</a>
                                 
                             </div>
                         </li>
@@ -53,9 +57,9 @@
                                 価格
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">～2万</a>
+                                <a class="dropdown-item" href="#">3万～10万</a>
+                                <a class="dropdown-item" href="#">10万～</a>
                                 
                             </div>
                         </li>
@@ -64,9 +68,10 @@
                                 画面サイズ
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">11～12.5</a>
+                                <a class="dropdown-item" href="#">13～14</a>
+                                <a class="dropdown-item" href="#">15～15.6</a>
+                                <a class="dropdown-item" href="#">17～</a>
                                 
                             </div>
                         </li>
@@ -76,9 +81,12 @@
                                 CPU
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Core i3</a>
+                                <a class="dropdown-item" href="#">Core i5</a>
+                                <a class="dropdown-item" href="#">Core i7</a>
                                 <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Ryzen</a>
+                                
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -86,9 +94,11 @@
                                 HDD/SSD
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">～128GB</a>
+                                <a class="dropdown-item" href="#">128GB～256GB</a>
+                                <a class="dropdown-item" href="#">256GB～480GB</a>
+                                <a class="dropdown-item" href="#">480GB～</a>
+                                
                             </div>
                         </li>
                     </ul>
@@ -97,6 +107,9 @@
                     </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        <a class="nav-link" href="{{route('show_cart')}}"><span class="material-icons-outlined">
+                            <img src="/icon/outline_shopping_cart_black_24dp.png" alt="cart">
+                            </span></a>
                         <a class="nav-link" href="{{ url('/home') }}">
                             home
                         </a>
@@ -138,6 +151,20 @@
         <main class="py-4">
             @yield('content')
         </main>
+    
+
+</div>
+<!--
+<footer class="footer bg-white border-top"　>
+    <div class= "container ">
+        <div class = "row  ">
+            <div class="col-3 text-center ">会社概要</div>
+            <div class ="col-3 text-center">お問い合わせ</div>
+            <div class = "col-3 text-center">送料</div>
+            <div class = "col-3 text-center">支払方法</div>
+        </div>
     </div>
+</footer>
+-->
 </body>
 </html>

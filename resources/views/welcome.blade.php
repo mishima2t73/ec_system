@@ -4,11 +4,18 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>@sol-shop</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <!-- Scripts -->
+        <script src="{{ asset('js/app.js') }}" defer></script>
 
+        <!-- Fonts -->
+        <link rel="dns-prefetch" href="//fonts.gstatic.com">
+
+        <!-- Styles -->
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <!-- Styles -->
         <style>
             html, body {
@@ -71,10 +78,6 @@
                         <a href="{{ url('/home') }}">Home</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
-
-                        <!--@if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a> -->
-                        @endif
                     @endauth
                 </div>
             @endif
@@ -85,7 +88,7 @@
                 </div>
                 <div>
                     <button type="submit" class="btn btn-secondary m-1" onclick="location.href='/top'">
-                        ショップトップへ
+                        ショップへ
                     </button>
                 </div>
             </div>

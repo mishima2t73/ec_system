@@ -1,4 +1,4 @@
-@section('footer')
+
     <footer class="footer">
         <div class = "row">
             <div class="col">会社概要</div>
@@ -7,4 +7,3 @@
             <div class = "col">支払方法</div>
         </div>
     </footer>
-@endsection

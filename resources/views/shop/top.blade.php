@@ -3,6 +3,7 @@
 
 
 @section('content')
+
 <div class = "row">
     <div class = "col-sm-2">
         
@@ -31,6 +32,7 @@
     </div>
 <div class = "col">
     <div class ="container">
+        <h3>中古PC </h3>
         @php
             $c = 0;
         @endphp
@@ -40,17 +42,15 @@
             @endif
             <div class="col align-items-center bg-white" >
                     @if ($product->image == 0)
-                    <a href= "/product/{{ $product->id}}">
+                    <a href= "shop/product/{{ $product->id}}">
                         <div class="image-col"><img src="/uploads/NO-IMAGE.png"  alt=""></div>
                     </a>    
                     @else
-                    <a href= "/product/{{ $product->id}}">
+                    <a href= "shop/product/{{ $product->id}}">
                         <div class="image-col"><img src="/uploads/{{$product->image}}" alt=""></div>
                     </a>
-                        
-                    
                     @endif
-                    <div ><a href= "/product/{{ $product->id}}">{{ $product->name}}</a></div>
+                    <div ><a href= "shop/product/{{ $product->id}}">{{ $product->name}}</a></div>
                     <div>￥{{ $product->price}}</div>
                     <div>{{ $product->cpu}}</div>
             </div>
@@ -66,7 +66,8 @@
                 {{$products->appends(['sort'=>$sortname,'order'=>$order])->links()}}
             </div>
         </div>
+    </div>    
     </div>
 </div>
-</div>
+
 @endsection
