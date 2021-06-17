@@ -2,6 +2,11 @@
 
 @section('content')
 <div class ="container">
+    @if(session('flash_message'))
+        <div class = "alert alert-info" role="alert">
+        {{ session('flash_message')}}
+        </div>
+    @endif
     <h2>中古PC</h2>
         <div class = "list-group-item p-5">
             <div class = "row justify-content-center">
