@@ -55,7 +55,7 @@ class ShopController extends Controller
         $request->session()->push('cartlist',$cartdata);
         //dd($request->session()->get('cartlist'));
         //dd($request->session()->all());
-        return redirect('/shop/product/'.$session_productid);        
+        return redirect('/shop/product/'.$session_productid)->with('flash_message','カートに商品を追加しました。');        
     }
     public function cart_delete_single($id){
         //product::destroy($id);
