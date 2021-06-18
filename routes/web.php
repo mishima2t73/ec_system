@@ -10,7 +10,37 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'HomeController@index')->name('home')->middleware('auth');
+
+//Route::get('/', 'HomeController@index')->name('home')->middleware('auth');
+//ユーザーログイン
+Route::namespace('User')->prefix('user')->name('user.')->group(function(){
+  //認証
+  Auth::routes([
+    'register'=>true,
+    'reset'=>false,
+    'verify'=>false
+  ]);
+  //認証後
+  Route::middleware('auth:user')->group(function(){
+    //TOP
+    Route::resource('home','HomeController',['only'=>'index']);
+  });
+});
+//管理者ログイン
+Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
+  //認証
+  Auth::routes([
+    'register'=>true,
+    'reset'=>false,
+    'verify'=>false
+  ]);
+  //認証後
+  Route::middleware('auth:admin')->group(function(){
+    //TOP
+    Route::resource('home','HomeController',['only'=>'index']);
+  });
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
