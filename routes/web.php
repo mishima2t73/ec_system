@@ -47,12 +47,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
 //Auth::routes();
 
-Route::get('/home', 'ProductController@index')->name('home');
-
+//Route::get('/home', 'ProductController@index')->name('home');
+/*
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
@@ -62,7 +62,7 @@ Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail
 Route::get('/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('/password/reset', 'Auth\ResetPasswordController@reset');
  
-
+*/
 //商品登録表示
 Route::get('/product/product_add','ProductController@product_addshow')->name('product.product_add');
 //商品登録
@@ -93,14 +93,14 @@ Route::post('/product/delete/{id}','ProductController@product_delete')->name('pr
 |-------------------------------------------------------------------------
 | 管理者以上で操作
 |-------------------------------------------------------------------------
-*/
+
 //Route::group(['middleware' => ['auth', 'can:admin']], function () {
   Route::group(['middleware' => ['auth']], function () {
   //ユーザー登録
   Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
   Route::post('register', 'Auth\RegisterController@register');
 });
-
+*/
 //スタッフ一覧
 Route::get('staff/staff_list','StaffsController@staff_list')->name('staff_list');
 //配送設定一覧
