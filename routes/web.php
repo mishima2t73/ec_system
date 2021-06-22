@@ -75,7 +75,7 @@ Route::post('/admin/product/delete/{id}','ProductController@product_delete')->na
   
 //スタッフ一覧
 Route::get('/admin/staff/staff_list','StaffsController@staff_list')->name('staff_list');
-Route::get('/admin/staff/staff_add','Admin\Auth\RegisterController@showRegistrationForm')->name('staff_registshow');
+
 //配送設定一覧
 Route::get('delivery/setting','AdminContoroller@show_setting')->name('setting');
 
@@ -93,4 +93,10 @@ Route::post('shop/cartin','ShopController@shop_cartin')->name('shop_cartin');
 //カート表示
 Route::get('shop/cart','ShopController@shop_cartshow')->name('show_cart');
 
- 
+//管理者用登録ルート
+Route::group(['middleware' => ['auth:admin', 'can:admin']], function () {
+  //ユーザー登録
+  Route::get('/admin/staff/staff_add','Admin\Auth\RegisterController@showRegistrationForm')->name('staff_registshow');
+  //Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+  Route::get('/admin/staff/staff_add','Admin\Auth\RegisterController@create')->name('staff_regist');
+});

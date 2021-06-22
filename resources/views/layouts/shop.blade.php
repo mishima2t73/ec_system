@@ -121,10 +121,10 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('user.login') }}">{{ __('ログイン') }}</a>
                             </li>
-                            @if (Route::has('register'))
-                                <!--<li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('登録') }}</a>
-                                </li>-->
+                            @if (Route::has('user.register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('user.register') }}">{{ __('登録') }}</a>
+                                </li>
                             @endif
                         @else
                             <li class="nav-item dropdown">

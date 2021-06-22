@@ -66,7 +66,7 @@
                                     </button>
                                 </div>
                                 <div class="col-sm-5">
-                                    <button type="submit" class="btn btn-secondary m-1" onclick="location.href='{{ route('staff_registshow') }}'">
+                                    <button type="submit" class="btn btn-secondary m-1" onclick="location.href='{{ route('admin.register') }}'">
                                         スタッフ登録
                                     </button>
                                 </div>
