@@ -34,12 +34,12 @@
                             <h3 class ="h3 mt-3">商品管理</h3>
                             <div class="row">
                             <div class="col-4">
-                                    <button type="submit" class="btn btn-secondary m-1" onclick="location.href='/product/product_add'">
+                                    <button type="submit" class="btn btn-secondary m-1" onclick="location.href='{{route('product.product_store')}}'">
                                         商品登録
                                     </button>
                                 </div>
                                 <div class="col-4">
-                                    <button type="submit" class="btn btn-secondary m-1" onclick="location.href='/product/product_list'">
+                                    <button type="submit" class="btn btn-secondary m-1" onclick="location.href='{{route('product.product_list')}}'">
                                         商品一覧
                                     </button>
                                 </div>

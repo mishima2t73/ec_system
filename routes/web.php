@@ -64,29 +64,29 @@ Route::post('/password/reset', 'Auth\ResetPasswordController@reset');
  
 */
 //商品登録表示
-Route::get('/product/product_add','ProductController@product_addshow')->name('product.product_add');
+Route::get('/admin/product/product_add','ProductController@product_addshow')->name('product.product_add');
 //商品登録
-Route::post('/product/product_store','ProductController@exe_store')->name('product.product_store');
+Route::post('/admin/product/product_store','ProductController@exe_store')->name('product.product_store');
 
 
 //商品一覧
-Route::get('/product/product_list','ProductController@product_list')->name('product.product_list');
+Route::get('/admin/product/product_list','ProductController@product_list')->name('product.product_list');
 
 //
 //Route::get()
 
 //商品詳細
-Route::get('/product/{id}','ProductController@product_data')->name('product.product_data');
+Route::get('/admin/product/{id}','ProductController@product_data')->name('product.product_data');
 
 //商品更新ページ表示
-Route::get('/product/update/{id}','ProductController@product_updateshow')->name('product_updateshow');
+Route::get('/admin/product/update/{id}','ProductController@product_updateshow')->name('product_updateshow');
 
 //商品情報更新
-Route::post('/product/update','ProductController@product_update')->name('product_update');
+Route::post('/admin/product/update','ProductController@product_update')->name('product_update');
 
 
 //商品削除
-Route::post('/product/delete/{id}','ProductController@product_delete')->name('product_delete');
+Route::post('/admin/product/delete/{id}','ProductController@product_delete')->name('product_delete');
 //  return redirect('/product/product_list');
   
 /*
