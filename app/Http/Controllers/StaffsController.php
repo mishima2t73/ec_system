@@ -9,7 +9,7 @@ class StaffsController extends Controller
     //ログイン確認処理？要確認
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth:admin');
         
     }
 
@@ -31,6 +31,6 @@ class StaffsController extends Controller
         $staffs = User::orderBy($sortname,$order)->paginate(10);
         //$productspage = product::orderBy($sortname,'asc')->paginate(5);
         //return view('product/product_list',compact("products","sortname","order"));
-        return view('staff/staff_list',compact("staffs","sortname","order"));
+        return view('admin/staff/staff_list',compact("staffs","sortname","order"));
     }
 }

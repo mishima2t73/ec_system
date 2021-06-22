@@ -27,6 +27,8 @@ Route::namespace('User')->prefix('user')->name('user.')->group(function(){
   });
 });
 //管理者ログイン
+//Route::get('/admin/staff/staff_add','RegisterController@showRegistrationForm')->name('staff_registshow');
+
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
   //認証
   Auth::routes([
@@ -72,7 +74,8 @@ Route::post('/admin/product/delete/{id}','ProductController@product_delete')->na
 //  return redirect('/product/product_list');
   
 //スタッフ一覧
-Route::get('staff/staff_list','StaffsController@staff_list')->name('staff_list');
+Route::get('/admin/staff/staff_list','StaffsController@staff_list')->name('staff_list');
+Route::get('/admin/staff/staff_add','Admin\Auth\RegisterController@showRegistrationForm')->name('staff_registshow');
 //配送設定一覧
 Route::get('delivery/setting','AdminContoroller@show_setting')->name('setting');
 
