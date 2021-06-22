@@ -47,33 +47,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-<<<<<<< HEAD
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-//Auth::routes();
-/*//決済ボタン表示ページ
-Route::get('/','settlementController@index')->name('index');
-//Stripeの処理
-Route::get('/settlement','settlementController@settlement')->name('settlement');
-//決済完了ページ
-Route::get('/complete','settlementController@complete')->name('complete');
-*/
-Route::get('/home', 'ProductController@index')->name('home');
-
-Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-Route::post('login', 'Auth\LoginController@login');
-Route::post('logout', 'Auth\LoginController@logout')->name('logout');
- 
-Route::get('/password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
-Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-Route::get('/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
-Route::post('/password/reset', 'Auth\ResetPasswordController@reset');
- 
-
-=======
->>>>>>> multi_login
 //商品登録表示
 Route::get('/admin/product/product_add','ProductController@product_addshow')->name('product.product_add');
 //商品登録
