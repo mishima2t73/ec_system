@@ -29,7 +29,7 @@
         </div>
     <div class = "col">
     <h2>スタッフ一覧</h2>
-    <button type="submit" class="btn btn-secondary m-1" onclick="location.href='{{ route('register') }}'">
+    <button type="submit" class="btn btn-secondary m-1" onclick="location.href='{{ route('admin.register') }}'">
         スタッフ登録
     </button>
     @foreach ($staffs as $staff)

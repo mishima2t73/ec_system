@@ -1,5 +1,4 @@
-@Auth
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
    
@@ -32,7 +31,7 @@
         </div>
     <div class = "col">
     <h2>商品一覧</h2>
-    <button type="submit" class="btn btn-secondary m-1" onclick="location.href='/product/product_add'">
+    <button type="submit" class="btn btn-secondary m-1" onclick="location.href='{{route('product.product_add')}}'">
         商品登録
     </button>
     @foreach ($products as $product)
@@ -78,4 +77,3 @@
     }
 </script>
 @endsection
-@endAuth

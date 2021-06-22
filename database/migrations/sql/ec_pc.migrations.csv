@@ -1,0 +1,9 @@
+"id","migration","batch"
+1,"2014_10_12_000000_create_users_table",1
+2,"2014_10_12_100000_create_password_resets_table",1
+3,"2019_08_19_000000_create_failed_jobs_table",1
+4,"2021_05_25_103650_create_product_table",1
+5,"2021_05_31_102836_create_member_table",2
+6,"2021_05_31_103155_create_order_table",2
+7,"2021_05_31_103210_create_cart_table",3
+8,"2021_06_09_161603_create_shopusers_table",4

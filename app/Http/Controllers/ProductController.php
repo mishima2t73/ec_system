@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
 use App\product;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
@@ -10,13 +12,13 @@ class ProductController extends Controller
     //ログイン確認処理？要確認
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth:admin');
         
     }
     public function index()
     {
         //$id = Auth::id();
-        return view('home');
+        return view('admin.home');
     }
     //list
     public function product_list(Request $request)
@@ -38,25 +40,29 @@ class ProductController extends Controller
         //$products = product::all();
         $products = product::orderBy($sortname,$order)->paginate(8);
         //$productspage = product::orderBy($sortname,'asc')->paginate(5);
-        return view('product/product_list',compact("products","sortname","order"));
+        return view('admin/product/product_list',compact("products","sortname","order"));
     }
 
     //data @param int $id 商品詳細
     public function product_data($id)
     {
         $product_data = product::find($id);
-        return view('product/product_data',[
+        return view('admin/product/product_data',[
             'product'=>$product_data
         ]);
     }
     //add show
     public function product_addshow()
     {
-        return view('product/product_add');
+        return view('admin/product/product_add');
     }
     //product_store ProductRequest
     public function exe_store(ProductRequest $request)
     {
+        if ($request){
+            return view('admin.home');
+        }
+        
         $product = $request->all();
         if($file = $request->uploadfile){
             $file_name = time() . $file->getClientOriginalName();
@@ -86,7 +92,7 @@ class ProductController extends Controller
     //update show product_updateshow
     public function product_updateshow($id){
         $product_data = product::find($id);
-        return view('product/product_update',[
+        return view('admin/product/product_update',[
             'product'=>$product_data
         ]);
     }
@@ -116,11 +122,11 @@ class ProductController extends Controller
     //delete
     public function product_delete($id){
         product::destroy($id);
-        return redirect('/product/product_list');
+        return redirect('admin//product/product_list');
     }
     //wordpressテスト　Route::get('/test', 'ProductController@wptest')->name('wptest');
     public function wptest(){
-        return view('/product/product_test');
+        return view('admin//product/product_test');
     }
 
 }

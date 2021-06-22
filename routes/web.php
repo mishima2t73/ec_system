@@ -10,11 +10,44 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'HomeController@index')->name('home')->middleware('auth');
+
+//Route::get('/', 'HomeController@index')->name('home')->middleware('auth');
+//ユーザーログイン
+Route::namespace('User')->prefix('user')->name('user.')->group(function(){
+  //認証
+  Auth::routes([
+    'register'=>true,
+    'reset'=>false,
+    'verify'=>false
+  ]);
+  //認証後
+  Route::middleware('auth:user')->group(function(){
+    //TOP
+    Route::resource('home','HomeController',['only'=>'index']);
+  });
+});
+//管理者ログイン
+//Route::get('/admin/staff/staff_add','RegisterController@showRegistrationForm')->name('staff_registshow');
+
+Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
+  //認証
+  Auth::routes([
+    'register'=>true,
+    'reset'=>false,
+    'verify'=>false
+  ]);
+  //認証後
+  Route::middleware('auth:admin')->group(function(){
+    //TOP
+    Route::resource('home','HomeController',['only'=>'index']);
+  });
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
 
+<<<<<<< HEAD
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -39,46 +72,37 @@ Route::get('/password/reset/{token}', 'Auth\ResetPasswordController@showResetFor
 Route::post('/password/reset', 'Auth\ResetPasswordController@reset');
  
 
+=======
+>>>>>>> multi_login
 //商品登録表示
-Route::get('/product/product_add','ProductController@product_addshow')->name('product.product_add');
+Route::get('/admin/product/product_add','ProductController@product_addshow')->name('product.product_add');
 //商品登録
-Route::post('/product/product_store','ProductController@exe_store')->name('product.product_store');
+Route::post('/admin/product/product_store','ProductController@exe_store')->name('product.product_store');
 
 
 //商品一覧
-Route::get('/product/product_list','ProductController@product_list')->name('product.product_list');
+Route::get('/admin/product/product_list','ProductController@product_list')->name('product.product_list');
 
 //
 //Route::get()
 
 //商品詳細
-Route::get('/product/{id}','ProductController@product_data')->name('product.product_data');
+Route::get('/admin/product/{id}','ProductController@product_data')->name('product.product_data');
 
 //商品更新ページ表示
-Route::get('/product/update/{id}','ProductController@product_updateshow')->name('product_updateshow');
+Route::get('/admin/product/update/{id}','ProductController@product_updateshow')->name('product_updateshow');
 
 //商品情報更新
-Route::post('/product/update','ProductController@product_update')->name('product_update');
+Route::post('/admin/product/update','ProductController@product_update')->name('product_update');
 
 
 //商品削除
-Route::post('/product/delete/{id}','ProductController@product_delete')->name('product_delete');
+Route::post('/admin/product/delete/{id}','ProductController@product_delete')->name('product_delete');
 //  return redirect('/product/product_list');
   
-/*
-|-------------------------------------------------------------------------
-| 管理者以上で操作
-|-------------------------------------------------------------------------
-*/
-//Route::group(['middleware' => ['auth', 'can:admin']], function () {
-  Route::group(['middleware' => ['auth']], function () {
-  //ユーザー登録
-  Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-  Route::post('register', 'Auth\RegisterController@register');
-});
-
 //スタッフ一覧
-Route::get('staff/staff_list','StaffsController@staff_list')->name('staff_list');
+Route::get('/admin/staff/staff_list','StaffsController@staff_list')->name('staff_list');
+
 //配送設定一覧
 Route::get('delivery/setting','AdminContoroller@show_setting')->name('setting');
 
@@ -96,4 +120,10 @@ Route::post('shop/cartin','ShopController@shop_cartin')->name('shop_cartin');
 //カート表示
 Route::get('shop/cart','ShopController@shop_cartshow')->name('show_cart');
 
- 
+//管理者用登録ルート
+Route::group(['middleware' => ['auth:admin', 'can:admin']], function () {
+  //ユーザー登録
+  Route::get('/admin/staff/staff_add','Admin\Auth\RegisterController@showRegistrationForm')->name('staff_registshow');
+  //Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+  Route::get('/admin/staff/staff_add','Admin\Auth\RegisterController@create')->name('staff_regist');
+});

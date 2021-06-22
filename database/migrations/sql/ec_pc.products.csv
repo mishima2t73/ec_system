@@ -1,0 +1,27 @@
+"id","name","maker","model_id","price","stock","cpu","memory","graphic","hdd_ssd","hdd_ssd_space","drive","display","os","attached","remarks","condition","staff_id","new_product","image","pctype","release_at","created_at","updated_at"
+1,"pc1","dell","fafas",1000,4,"cel","12","intel","HDD","240GB","nashi","12.5","win7 pro","AC","USB3.0","良",1,1,"16231127852929パソコン.png","デスクトップPC","",2021/05/25 15:55:18,2021/06/08 9:39:45
+2,"Latitude E6230","Dell","E6230",9900,1,"Core i5 3340M(2.7GHz)","4GB(2GB+2GB)PC3-12800","ntel HD Graphics","HDD","256GB","-","12.5インチ / FWXGA(1366x768)","Win7 Pro 32bit","ACアダプター","バッテリー充電不可","-",1,0,"1623112940K0000385469.jpg","デスクトップPC","",2021/05/25 15:55:21,2021/06/08 9:42:20
+3,"Vostro 270s","Dell","Vostro270s",14200,3,"Core i5 3470S(2.9GHz)","4GB PC3-12800","Intel HD Graphics","HDD","100GB","DVDスーパーマルチ","-","Win10 Home 64bit","電源ケーブル","-","良",2,1,"1623113028ダウンロード.jpg","デスクトップPC","",2021/05/24 15:55:25,2021/06/08 9:43:48
+4,"Vostro 270s","Dell","Vostro270s",20000,3,"Core i7 3470S(2.9GHz)","8GB PC3-12800","Intel HD Graphics","HDD","200GB","DVDスーパーマルチ","-","Win10 Home 64bit","電源ケーブル","箱傷あり","悪",2,1,"1623113125ダウンロード.jpg","デスクトップPC","",2021/05/19 15:55:31,2021/06/08 9:45:25
+6,"AppleMacBookPro 14,2 (2017, Thunderbolt)","Apple","-",74800,2,"Intel(R) Core(TM) i5-7267U CPU @ 3.10GHz","16GB(8GBx2)","Intel Iris Plus Graphics 650","SSD","256GB","-","13.3インチ","macOS Catalina 10.15.7","-","-","良",1,0,"1623113164ダウンロード (1).jpg","デスクトップPC","2021-05-28",2021/05/28 10:06:27,2021/06/08 9:46:04
+7,"AppleMacBookPro 14,2 (2017, Thunderbolt)","Apple","-",74800,2,"Intel(R) Core(TM) i5-7267U CPU @ 3.10GHz","16GB(8GBx2)","Intel Iris Plus Graphics 650","SSD","256GB","-","13.3インチ","macOS Catalina 10.15.7","-","-","良",1,0,"0","デスクトップPC","2021-05-28",2021/05/28 10:06:42,2021/05/28 10:06:42
+11,"AppleMacBookPro 14,2 (2017, Thunderbolt)","Apple","-",74800,2,"Intel(R) Core(TM) i5-7267U CPU @ 3.10GHz","16GB(8GBx2)","Intel Iris Plus Graphics 650","SSD","256GB","-","13.3インチ","macOS Catalina 10.15.7","-","-","良",1,0,"0","デスクトップPC","2021-05-28",2021/05/28 10:11:58,2021/05/28 10:11:58
+12,"Apple iMac14,4","Apple","Mid 2014",74800,2,"Intel(R) Core(TM) i5-4260U CPU @ 1.40GHz","8GB(4GB×2)","Intel Iris Plus Graphics 650","HDD","1000GB","-","13.3インチ","macOS Catalina 10.15.x","-","-","良",1,0,"0","デスクトップPC","2021-05-28",2021/05/28 10:14:11,2021/05/28 10:14:11
+13,"STYLE-M046-C59-UHS [Windows 10 Home]","iiyama","IStDXi-M046-AC59_-UHCSB",28500,2,"Celeron G5905","4GB(4GB×1)","UHD Graphics 610","SSD","240GB","DVDスーパーマルチ","-","Windows 10 Home 64ビット","350W 80PLUS BRONZE認証 ATX電源","PS/2コネクタ(キーボード/マウス兼用)×1 ,アナログ6chサウンド(ライン出力×1/ライン入力×1/マイク入力×1) ,USB 3.0×6(前面×2/背面×4) ,1000BASE-T LANポート×1 ,マザーボード側ディスプレイ出力(HDMI×1/DisplayPort×1)
+約幅175mm×奥行387mm×高さ360mm ※最大突起物除く","良",1,0,"1623052587style_6tju_gallery_02_1000_03.jpg","デスクトップPC","2021-06-07",2021/06/07 15:50:48,2021/06/07 16:56:27
+14,"FMV LIFEBOOK AH","富士通","WAB/E3 FMVWE3AB11_KC",37000,2,"AMD 3020e 1.2GHz/2コア","4GB","AMD Radeon Graphics","HDD","256GB","DVD±R/±RW/RAM/±RDL","15.6","Windows 10 Home 64bit","AC","HDMIx1
+USB3.1 Gen1(USB3.0)x2
+USB3.1 Gen2 Type-Cx1
+Webカメラ
+Bluetooth5.0
+日本語キーボード
+テンキー
+SDスロット","良",1,0,"1623135041K0001321507.jpg","ノートPC","2021-06-08",2021/06/08 15:50:41,2021/06/08 15:50:41
+15,"dynabook PZ/HPB","Dynabook","W6PHP5BZDB-K",87000,1,"Core i5 1135G7","8GB","Intel Iris Xe Graphics","SSD","256GB","-","15.6","Windows 10 Home 64bit","AC","状態：傷あり
+フルHD (1920x1080)
+DDR4 PC4-25600
+Webカメラ
+Bluetooth5.0
+日本語キーボード
+テンキー","問題有",1,0,"1623136539K0001326672.jpg","ノートPC","2021-06-08",2021/06/08 16:15:39,2021/06/08 16:15:39
+16,"Latitude E6230","Dell","E6230",9900,1,"Core i5 3340M(2.7GHz)","4GB(2GB+2GB)PC3-12800","ntel HD Graphics","HDD","256GB","-","12.5インチ / FWXGA(1366x768)","Win7 Pro 32bit","ACアダプター","バッテリー充電不可","-",1,0,"1623112940K0000385469.jpg","デスクトップPC","",2021/05/25 15:55:21,2021/06/08 9:42:20
