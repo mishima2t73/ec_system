@@ -91,6 +91,15 @@
                         ショップへ
                     </button>
                 </div>
+
+                <div>
+                    <button type="submit" class="btn btn-secondary m-1" onclick="location.href='/top'">
+                        管理者画面へ
+                    </button>
+                </div>
+
+
+
             </div>
         </div>
     </body>
