@@ -18,14 +18,23 @@ Route::namespace('User')->prefix('user')->name('user.')->group(function(){
   Auth::routes([
     'register'=>true,
     'reset'=>false,
-    'verify'=>false
+    'verify'=>true
   ]);
   //認証後
   Route::middleware('auth:user')->group(function(){
     //TOP
     Route::resource('home','HomeController',['only'=>'index']);
   });
+  //reset
+  Route::post('password/email', 'User\Auth\ForgotPasswordController@sendResetLinkEmail')->name('User.password.email');
+  Route::get('password/reset', 'User\Auth\ForgotPasswordController@showLinkRequestForm')->name('User.password.request');
+  Route::post('password/reset', 'User\Auth\ResetPasswordController@reset')->name('User.password.update');
+  Route::get('password/reset/{token}', 'User\Auth\ResetPasswordController@showResetForm')->name('User.password.reset');
 });
+Route::post('password/email', 'User\Auth\ForgotPasswordController@sendResetLinkEmail')->name('User.password.email');
+  Route::get('password/reset', 'User\Auth\ForgotPasswordController@showLinkRequestForm')->name('User.password.request');
+  Route::post('password/reset', 'User\Auth\ResetPasswordController@reset')->name('User.password.update');
+  Route::get('password/reset/{token}', 'User\Auth\ResetPasswordController@showResetForm')->name('User.password.reset');
 //管理者ログイン
 //Route::get('/admin/staff/staff_add','RegisterController@showRegistrationForm')->name('staff_registshow');
 
