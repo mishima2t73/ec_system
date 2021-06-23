@@ -51,6 +51,9 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
     Route::resource('home','HomeController',['only'=>'index']);
   });
 });
+Route::middleware('user:verified')->group(function(){
+  return view('/user/verify');
+});
 
 Route::get('/', function () {
     return view('welcome');
