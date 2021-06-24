@@ -1,9 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\User\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\facades\Auth;
 
 class LoginController extends Controller
 {
@@ -25,8 +28,8 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
-
+    //protected $redirectTo = '/home';
+    protected $redirectTo = RouteServiceProvider::HOME;
     /**
      * Create a new controller instance.
      *
@@ -34,6 +37,24 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware('guest:user')->except('logout');
     }
+    //guard
+    protected function guard(){
+        return Auth::guard('user');
+    }
+    //login
+    public function showLoginForm(){
+        return view('user.auth.login');
+    }
+
+    //ログアウト
+    public function logout(Request $request){
+        Auth::guard('user')->logout();
+        return $this->loggedOut($request);
+    }
+    public function loggedOut(Request $request){
+        return redirect(route('user.login'));
+    }
+
 }

@@ -1,12 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Admin\Auth;
 
-use App\User;
 use App\Http\Controllers\Controller;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use illuminate\Http\Request;
+use illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Admin;
 
 class RegisterController extends Controller
 {
@@ -28,19 +32,28 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = RouteServiceProvider::ADMIN_HOME;
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
+
     public function __construct()
     {
-        $this->middleware('auth'); 
+        $this->middleware('auth:admin'); 
         //$this->middleware('guest');
     }
+    protected function guard()
+    {
+        return Auth::guard('admin');
+    }
 
+    public function showRegistrationForm()
+    {
+        return view('admin.auth.register');
+    }
     /**
      * Get a validator for an incoming registration request.
      *

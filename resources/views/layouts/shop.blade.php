@@ -110,18 +110,21 @@
                         <a class="nav-link" href="{{route('show_cart')}}"><span class="material-icons-outlined">
                             <img src="/icon/outline_shopping_cart_black_24dp.png" alt="cart">
                             </span></a>
-                        <a class="nav-link" href="{{ url('/home') }}">
-                            home
+                        @if (Auth()->check())
+                        <a class="nav-link" href="/mypage/{{ Auth::user()->id}}/home">
+                            Mypage
                         </a>
+                        @endif
+
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('ログイン') }}</a>
+                                <a class="nav-link" href="{{ route('user.login') }}">{{ __('ログイン') }}</a>
                             </li>
-                            @if (Route::has('register'))
-                                <!--<li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('登録') }}</a>
-                                </li>-->
+                            @if (Route::has('user.register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('user.register') }}">{{ __('登録') }}</a>
+                                </li>
                             @endif
                         @else
                             <li class="nav-item dropdown">
@@ -130,13 +133,13 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    <a class="dropdown-item" href="{{ route('user.logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    <form id="logout-form" action="{{ route('user.logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
                                 </div>
