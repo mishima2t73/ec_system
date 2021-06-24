@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Illuminate\Http\Request;
 
 class ResetPasswordController extends Controller
 {
@@ -34,6 +35,19 @@ class ResetPasswordController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('guest:admin');
+    }
+    public function showResetForm(request $request,$token = null)
+    {
+        return view('admins.auth.passwords.reset')->with(['token' => $token,'email'=>$request->email]);
+    }
+
+    public function guard()
+    {
+        return \Auth::guard('admin');
+    }
+    public function broker()
+    {
+        return \Password::broker('admins');
     }
 }

@@ -26,15 +26,13 @@ Route::namespace('User')->prefix('user')->name('user.')->group(function(){
     Route::resource('home','HomeController',['only'=>'index']);
   });
   //reset
+  
+});
   Route::post('password/email', 'User\Auth\ForgotPasswordController@sendResetLinkEmail')->name('User.password.email');
   Route::get('password/reset', 'User\Auth\ForgotPasswordController@showLinkRequestForm')->name('User.password.request');
   Route::post('password/reset', 'User\Auth\ResetPasswordController@reset')->name('User.password.update');
   Route::get('password/reset/{token}', 'User\Auth\ResetPasswordController@showResetForm')->name('User.password.reset');
-});
-Route::post('password/email', 'User\Auth\ForgotPasswordController@sendResetLinkEmail')->name('User.password.email');
-  Route::get('password/reset', 'User\Auth\ForgotPasswordController@showLinkRequestForm')->name('User.password.request');
-  Route::post('password/reset', 'User\Auth\ResetPasswordController@reset')->name('User.password.update');
-  Route::get('password/reset/{token}', 'User\Auth\ResetPasswordController@showResetForm')->name('User.password.reset');
+
 //管理者ログイン
 //Route::get('/admin/staff/staff_add','RegisterController@showRegistrationForm')->name('staff_registshow');
 
@@ -51,7 +49,12 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
     Route::resource('home','HomeController',['only'=>'index']);
   });
 });
-Route::middleware('user:verified')->group(function(){
+  Route::post('admin/password/email', 'Admin\Auth\ForgotPasswordController@sendResetLinkEmail')->name('Admin.password.email');
+  Route::get('admin/password/reset', 'Admin\Auth\ForgotPasswordController@showLinkRequestForm')->name('Admin.password.request');
+  Route::post('admin/password/reset', 'Admin\Auth\ResetPasswordController@reset')->name('Admin.password.update');
+  Route::get('admin/password/reset/{token}', 'Admin\Auth\ResetPasswordController@showResetForm')->name('Admin.password.reset');
+  Route::middleware('user:verified')->group(function(){
+    
   return view('/user/verify');
 });
 
@@ -68,8 +71,6 @@ Route::post('/admin/product/product_store','ProductController@exe_store')->name(
 //商品一覧
 Route::get('/admin/product/product_list','ProductController@product_list')->name('product.product_list');
 
-//
-//Route::get()
 
 //商品詳細
 Route::get('/admin/product/{id}','ProductController@product_data')->name('product.product_data');
@@ -104,6 +105,10 @@ Route::get('shop/product/{id}','ShopController@showproduct_data')->name('showpro
 Route::post('shop/cartin','ShopController@shop_cartin')->name('shop_cartin');
 //カート表示
 Route::get('shop/cart','ShopController@shop_cartshow')->name('show_cart');
+//お問い合わせ
+
+
+
 
 //管理者用登録ルート
 Route::group(['middleware' => ['auth:admin', 'can:admin']], function () {
