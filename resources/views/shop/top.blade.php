@@ -4,9 +4,10 @@
 
 @section('content')
 
+
 <div class = "row">
-    <div class = "col-sm-2">
-        
+    <div class = "col-sm-2">   
+
         <div class = "list-group">
         <ul>
             <h3>並べ替え</h3>
@@ -27,7 +28,14 @@
             <li class="list-group-item">
                 <a href="/top?sortname={{$sortname}}&order=desc">降順</a>
             </li>
+        
+        <li class="list-group-item">
+
+        <a href='../kensaku_index.blade.php'>検索🔍</a>
+
+        </li>
         </ul>
+        
         </div>
     </div>
 <div class = "col">
