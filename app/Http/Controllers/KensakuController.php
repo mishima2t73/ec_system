@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -25,6 +24,6 @@ class KensakuController extends Controller
  
         $kensaku = $query->get();
  
-        return view('kensaku.index', compact('kensaku', 'keyword', 'stock'));
+        return view('kensaku.index', compact('keyword', 'stock'));
     }
 }
