@@ -54,7 +54,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
   Route::post('admin/password/reset', 'Admin\Auth\ResetPasswordController@reset')->name('Admin.password.update');
   Route::get('admin/password/reset/{token}', 'Admin\Auth\ResetPasswordController@showResetForm')->name('Admin.password.reset');
   Route::middleware('user:verified')->group(function(){
-    
+
   return view('/user/verify');
 });
 
@@ -90,7 +90,7 @@ Route::post('/admin/product/delete/{id}','ProductController@product_delete')->na
 Route::get('/admin/staff/staff_list','StaffsController@staff_list')->name('staff_list');
 
 //配送設定一覧
-Route::get('delivery/setting','AdminContoroller@show_setting')->name('setting');
+//Route::get('delivery/setting','AdminContoroller@show_setting')->name('setting');
 
 //test
 Route::get('/test', 'ProductController@wptest')->name('wptest');
@@ -106,6 +106,9 @@ Route::post('shop/cartin','ShopController@shop_cartin')->name('shop_cartin');
 //カート表示
 Route::get('shop/cart','ShopController@shop_cartshow')->name('show_cart');
 //お問い合わせ
+Route::get('shop/contact/', 'ContactController@input'); // 入力画面
+Route::patch('shop/contact/', 'ContactController@confirm'); // 確認画面
+Route::post('shop/contact/', 'ContactController@finish'); // 完了画面
 
 
 
