@@ -109,7 +109,8 @@ Route::get('shop/cart','ShopController@shop_cartshow')->name('show_cart');
 Route::get('shop/contact/', 'ContactController@input'); // 入力画面
 Route::patch('shop/contact/', 'ContactController@confirm'); // 確認画面
 Route::post('shop/contact/', 'ContactController@finish'); // 完了画面
-
+//検索表示
+Route::get('shop/kensaku','KensakuController@kensaku_index')->name('kensaku_index');
 
 
 
