@@ -21,7 +21,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body style="background-color:#cfd6e0">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -151,7 +151,7 @@
             
         </nav>
 
-        <main class="py-4">
+        <main class="py-5">
             @yield('content')
         </main>
     
@@ -160,8 +160,8 @@
 <footer class="fixed-bottom bg-white">
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-2 text-center "><p>お問い合わせ</p></div><div class="col-2 text-center"><a href="{{route('shop_contact')}}">お問い合わせ</a></div>
-            <div class="col-2 text-center "><p>お問い合わせ</p></div><div class="col-2 text-center"><p>お問い合わせ</p></div>
+            <div class="col-2 text-center "><a class = "btn" href="{{route('shop_contact')}}">会社概要</a></div><div class="col-2 text-center"><a class = "btn" href="{{route('shop_contact')}}">お問い合わせ</a></div>
+            <div class="col-2 text-center "><a class = "btn" href="{{route('shop_contact')}}">送料</a></div><div class="col-2 text-center"><a class = "btn" href="{{route('shop_contact')}}">支払方法</a></div>
         </div>
     </div>
     

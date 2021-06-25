@@ -55,7 +55,7 @@
                     </a>    
                     @else
                     <a href= "shop/product/{{ $product->id}}">
-                        <div class="image-col"><img src="/uploads/{{$product->image}}" alt=""></div>
+                        <div class="image-col"><img  style="max-width: 110px" src="/uploads/{{$product->image}}" alt=""></div>
                     </a>
                     @endif
                     <div ><a href= "shop/product/{{ $product->id}}">{{ $product->name}}</a></div>
