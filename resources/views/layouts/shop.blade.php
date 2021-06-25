@@ -160,7 +160,7 @@
 <footer class="fixed-bottom bg-white">
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-2 text-center "><p>お問い合わせ</p></div><div class="col-2 text-center"><a href=""></a></div>
+            <div class="col-2 text-center "><p>お問い合わせ</p></div><div class="col-2 text-center"><a href="{{route('shop_contact')}}">お問い合わせ</a></div>
             <div class="col-2 text-center "><p>お問い合わせ</p></div><div class="col-2 text-center"><p>お問い合わせ</p></div>
         </div>
     </div>

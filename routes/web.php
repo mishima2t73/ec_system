@@ -106,8 +106,8 @@ Route::post('shop/cartin','ShopController@shop_cartin')->name('shop_cartin');
 //カート表示
 Route::get('shop/cart','ShopController@shop_cartshow')->name('show_cart');
 //お問い合わせ
-Route::get('shop/contact/', 'ContactController@input'); // 入力画面
-Route::patch('shop/contact/', 'ContactController@confirm'); // 確認画面
+Route::get('shop/contact/form', 'ContactController@input')->name('shop_contact'); // 入力画面
+Route::patch('shop/contact/', 'ContactController@confirm')->name('shop_confirm'); // 確認画面
 Route::post('shop/contact/', 'ContactController@finish'); // 完了画面
 
 

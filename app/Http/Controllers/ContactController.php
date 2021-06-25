@@ -14,7 +14,7 @@ class ContactController extends Controller
             'title'=>'お問い合わせ',
             'subtitle'=>'入力画面',
         );
-        return view('shop.contact.input')->with($hash);
+        return view('shop.contact.form')->with($hash);
     }
 
     //確認画面
@@ -25,7 +25,7 @@ class ContactController extends Controller
             'title' => 'お問い合わせ',
             'subtitle' => '確認画面',
         );
-        return view('ahop.contact.confirm')->with($hash);
+        return view('shop.contact.confirm')->with($hash);
     }
 
     public function finish(Request $request)
