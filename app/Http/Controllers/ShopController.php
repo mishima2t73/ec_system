@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use Illuminate\Support\Facades\DB;
 use App\product;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
@@ -9,26 +11,34 @@ class ShopController extends Controller
 {
     //top
     public function topview(Request $request){
-        //$sortname = "created_at";
-        if($request->sortname){
-            $sortname = $request->sortname;    
+        $category = $request->input('category', 'default');
+        $subcategory = $request->input('subcategory', '');
+        $sortname = $request->input('sortname','id');
+        $order = $request->input('order','desc');
+        //dd($subcategory);
+        if($category == "default"){
+            $products = DB::table('products');
+            $products = Product::orderBy($sortname,$order)
+                                    ->paginate(9);
         }
-        else{
-            $sortname = "id";
+        if($category == "maker" || $category == "CPU" ){
+            $products = Product::where($category,$subcategory)
+                                ->orderBy($sortname,$order)
+                                ->paginate(9);
         }
-        //$sortname = $request->sortname;
-        if($request->order){
-            $order = $request->order;
+        if($category == "price" || $category == "display || $category == hdd_ssd" ){
+            $products = Product::wherebetween($category,$subcategory)
+                                ->orderBy($sortname,$order)
+                                ->paginate(9);
+            $subcategory = "pricebet";
         }
-        else{$order = "asc";}
+        //dd($products);                
         
-
-        //$products = product::all();
-        $products = product::orderBy($sortname,$order)->paginate(9);
-        //$productspage = product::orderBy($sortname,'asc')->paginate(5);
-        //return view('product/product_list',compact("products","sortname","order"));
-        //dd($sortname,$order);
-        return view('/shop/top',compact("products","sortname","order"));
+        return view('/shop/top',compact("products","sortname","order","category","subcategory"));
+    }
+    public function shop_category(Request $request){
+        
+        return view('/shop/top',compact("products","sortname","order"));      
     }
     //商品詳細 Route::get('shop/product/{id}','ShopController@showproduct_data')->name('showproduct_data');
     public function showproduct_data($id){

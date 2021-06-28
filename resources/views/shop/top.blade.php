@@ -7,26 +7,25 @@
 
 <div class = "row">
     <div class = "col-sm-2">   
-
         <div class = "list-group">
         <ul>
             <h3>並べ替え</h3>
             <li class="list-group-item">
-                <a href="/top?sortname=id">商品ID</a>
+                <a href="/top?category={{$category}}&subcategory={{$subcategory}}&sortname=id&order={{$order}}">商品ID</a>
             </li>
             <li class="list-group-item">
-                <a href="/top?sortname=name">商品名</a>
+                <a href="/top?category={{$category}}&subcategory={{$subcategory}}&sortname=name&order={{$order}}">商品名</a>
             </li>
             <li class="list-group-item">
-                <a href="/top?sortname=price">価格</a>
+                <a href="/top?category={{$category}}&subcategory={{$subcategory}}&sortname=price&order={{$order}}">価格</a>
             </li>
         </ul>
         <ul>
             <li class="list-group-item">
-                <a href="/top?sortname={{$sortname}}&order=asc">昇順</a>
+                <a href="/top?category={{$category}}&subcategory={{$subcategory}}&sortname={{$sortname}}&order=asc">昇順</a>
             </li>
             <li class="list-group-item">
-                <a href="/top?sortname={{$sortname}}&order=desc">降順</a>
+                <a href="/top?category={{$category}}&subcategory={{$subcategory}}&sortname={{$sortname}}&order=desc">降順</a>
             </li>
         
         <li class="list-group-item">
@@ -48,7 +47,7 @@
             @if ($c % 3 == 0)
                 <div class = "row m-4 text-center" >        
             @endif
-            <div class="col align-items-center bg-white" >
+            <div class="col-4 align-items-center bg-white" >
                     @if ($product->image == 0)
                     <a href= "shop/product/{{ $product->id}}">
                         <div class="image-col"><img src="/uploads/NO-IMAGE.png"  alt=""></div>
@@ -69,12 +68,15 @@
             $c=$c+1;
         @endphp
         @endforeach
+        
+    </div>  
+    <div class="">
         <div class = "row ">
             <div class = "col-md-5 offset-md-5 align-items-center">
                 {{$products->appends(['sort'=>$sortname,'order'=>$order])->links()}}
             </div>
         </div>
-    </div>    
+    </div>
     </div>
 </div>
 

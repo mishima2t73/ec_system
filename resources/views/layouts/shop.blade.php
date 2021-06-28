@@ -46,10 +46,12 @@
                                 メーカー
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">dell</a>
-                                <a class="dropdown-item" href="#">Panasonic</a>
-                                <a class="dropdown-item" href="#">Dynabook</a>
-                                
+                                <a class="dropdown-item" href="{{route('top',['category'=>'maker','subcategory' => 'Dell'])}}">Dell</a>
+                                <a class="dropdown-item" href="{{route('top',['category'=>'maker','subcategory' => 'Panasonic'])}}">Panasonic</a>
+                                <a class="dropdown-item" href="{{route('top',['category'=>'maker','subcategory' => 'Dynabook'])}}">Dynabook</a>
+                                <a class="dropdown-item" href="{{route('top',['category'=>'maker','subcategory' => 'Apple'])}}">Apple</a>
+                                <a class="dropdown-item" href="{{route('top',['category'=>'maker','subcategory' => 'iiyama'])}}">iiyama</a>
+                                <a class="dropdown-item" href="{{route('top',['category'=>'maker','subcategory' => 'その他'])}}">その他</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -57,9 +59,9 @@
                                 価格
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">～2万</a>
-                                <a class="dropdown-item" href="#">3万～10万</a>
-                                <a class="dropdown-item" href="#">10万～</a>
+                                <a class="dropdown-item" href="{{route('top',['category'=>'price','subcategory' => [0,30000]])}}">～3万</a>
+                                <a class="dropdown-item" href="{{route('top',['category'=>'price','subcategory' => [30000,100000]])}}">3万～10万</a>
+                                <a class="dropdown-item" href="{{route('top',['category'=>'price','subcategory' => [100000,1000000]])}}">10万</a>
                                 
                             </div>
                         </li>
@@ -159,7 +161,7 @@
 </div>
 <footer class="fixed-bottom bg-white">
     <div class="container-fluid">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" style="margin-right:0px,margin-left:0px;">
             <div class="col-2 text-center "><a class = "btn" href="{{route('shop_contact')}}">会社概要</a></div><div class="col-2 text-center"><a class = "btn" href="{{route('shop_contact')}}">お問い合わせ</a></div>
             <div class="col-2 text-center "><a class = "btn" href="{{route('shop_contact')}}">送料</a></div><div class="col-2 text-center"><a class = "btn" href="{{route('shop_contact')}}">支払方法</a></div>
         </div>
