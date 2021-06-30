@@ -22,8 +22,8 @@
 
                             <div class = "col-sm-4">今月</div><div class = "col-sm-4">個数：32</div><div class="col-sm-4">金額：142000</div>
                         </div>
-                        <button type="submit" class="btn btn-secondary m-1" onclick="location.href=''">
-                            注文詳細
+                        <button type="submit" class="btn btn-secondary m-1" onclick="location.href='{{route('sales_show')}}'">
+                            売上一覧・注文明細
                         </button>
                         <button type="submit" class="btn btn-secondary m-1" onclick="location.href=''">
                             売上分析
@@ -34,7 +34,7 @@
                             <h3 class ="h3 mt-3">商品管理</h3>
                             <div class="row">
                             <div class="col-4">
-                                    <button type="submit" class="btn btn-secondary m-1" onclick="location.href='{{route('product.product_store')}}'">
+                                    <button type="submit" class="btn btn-secondary m-1" onclick="location.href='{{route('product.product_add')}}'">
                                         商品登録
                                     </button>
                                 </div>

@@ -68,7 +68,7 @@ Route::get('/admin/product/product_add','ProductController@product_addshow')->na
 Route::post('/admin/product/product_store','ProductController@exe_store')->name('product.product_store');
 
 
-//商品一覧
+//商品一覧、カテゴリー絞り込み、並び替え
 Route::get('/admin/product/product_list','ProductController@product_list')->name('product.product_list');
 
 //商品詳細
@@ -92,6 +92,14 @@ Route::get('/admin/staff/staff_list','StaffsController@staff_list')->name('staff
 
 //test
 Route::get('/test', 'ProductController@wptest')->name('wptest');
+
+//売上一覧
+Route::get('salse','Admin\HomeController@sales_show')->name('sales_show');
+//明細
+Route::get('sales/{id}','Admin\HomeController@product_sale_detail')->name('showproduct_data');
+
+//test購入ページ表示
+Route::get('/test_buy','Admin\HomeController@test_buypage')->name('testbuypage');
 
 
 //消費者向けショップ画面----------------------------------

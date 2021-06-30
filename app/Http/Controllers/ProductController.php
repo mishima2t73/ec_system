@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\product;
 use Illuminate\Http\Request;
@@ -23,21 +24,12 @@ class ProductController extends Controller
     //list
     public function product_list(Request $request)
     {
-        //$sortname = "created_at";
-        if($request->sortname){
-            $sortname = $request->sortname;    
-        }
-        else{
-            $sortname = "id";
-        }
-        //$sortname = $request->sortname;
-        if($request->order){
-            $order = $request->order;
-        }
-        else{$order = "asc";}
-        
+        $sortname = $request->input('sortname','id');
+        $order = $request->input('order','desc');
+
 
         //$products = product::all();
+        $products = DB::table('products');
         $products = product::orderBy($sortname,$order)->paginate(8);
         //$productspage = product::orderBy($sortname,'asc')->paginate(5);
         return view('admin/product/product_list',compact("products","sortname","order"));

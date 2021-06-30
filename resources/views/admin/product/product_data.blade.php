@@ -29,9 +29,9 @@
         </div>
         <div class = "row ">
             <!-- <a href="/product/{{ $product->id}}"  >{{ $product->name}} -->
-            <div class = "col-sm-2"><button type="submit" class="btn btn-secondary m-1" onclick="location.href='/product/update/{{$product->id}}'">変更</button></div>
+            <div class = "col-sm-2"><button type="submit" class="btn btn-secondary m-1" onclick="location.href='/admin/product/update/{{$product->id}}'">変更</button></div>
             
-            <div class = "col-sm-2"><button type="submit" class="btn btn-secondary m-1" onclick="">削除</button></div>
+            <div class = "col-sm-2"><button type="submit" class = "btn btn-danger m-1">削除</button></div>
         </div>
 </div>
 @endsection
