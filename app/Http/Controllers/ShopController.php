@@ -40,6 +40,7 @@ class ShopController extends Controller
         
         return view('/shop/top',compact("products","sortname","order"));      
     }
+    
     //商品詳細 Route::get('shop/product/{id}','ShopController@showproduct_data')->name('showproduct_data');
     public function showproduct_data($id){
         $product_data = product::find($id);

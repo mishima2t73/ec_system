@@ -96,7 +96,7 @@ Route::get('/test', 'ProductController@wptest')->name('wptest');
 //売上一覧
 Route::get('salse','Admin\HomeController@sales_show')->name('sales_show');
 //明細
-Route::get('sales/{id}','Admin\HomeController@product_sale_detail')->name('showproduct_data');
+Route::get('admin/sales/{sales_number}','Admin\HomeController@product_sale_detail')->name('showproduct_data');
 
 //test購入ページ表示
 Route::get('/test_buy','Admin\HomeController@test_buypage')->name('testbuypage');

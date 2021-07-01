@@ -16,11 +16,11 @@
                         <h3>売上</h3>
                         <div class = "row m-3 border-bottom">
 
-                            <div class = "col-sm-4">今日</div><div class = "col-sm-4">個数：1</div><div class="col-sm-4">金額：10000</div>
+                            <div class = "col-sm-4">今日</div><div class = "col-sm-4">個数：{{$today_count}}</div><div class="col-sm-4">金額：{{$today_sales}}円</div>
                             
-                            <div class = "col-sm-4">昨日</div><div class = "col-sm-4">個数：2</div><div class="col-sm-4">金額：63292</div>
+                            <div class = "col-sm-4">昨日</div><div class = "col-sm-4">個数：{{$yesterday_count}}</div><div class="col-sm-4">金額：{{$yesterday_sales}}円</div>
 
-                            <div class = "col-sm-4">今月</div><div class = "col-sm-4">個数：32</div><div class="col-sm-4">金額：142000</div>
+                            <div class = "col-sm-4">今月</div><div class = "col-sm-4">個数：{{$month_count}}</div><div class="col-sm-4">金額：{{$month_sales}}円</div>
                         </div>
                         <button type="submit" class="btn btn-secondary m-1" onclick="location.href='{{route('sales_show')}}'">
                             売上一覧・注文明細
