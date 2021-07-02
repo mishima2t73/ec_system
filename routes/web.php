@@ -94,7 +94,9 @@ Route::get('/admin/staff/staff_list','StaffsController@staff_list')->name('staff
 Route::get('/test', 'ProductController@wptest')->name('wptest');
 
 //売上一覧
-Route::get('salse','Admin\HomeController@sales_show')->name('sales_show');
+Route::get('admin/salse','Admin\HomeController@sales_show')->name('sales_show');
+
+Route::get('admin/salse_analysis','Admin\HomeController@sales_analysis')->name('sales_analysis');
 //明細
 Route::get('admin/sales/{sales_number}','Admin\HomeController@product_sale_detail')->name('showproduct_data');
 

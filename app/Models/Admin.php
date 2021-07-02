@@ -9,7 +9,7 @@ use App\Notifications\AdminPasswordResetNotification;
 
 class Admin extends Authenticatable
 {
-    //@var array
+    
     use Notifiable;
 
     protected $fillable = [
