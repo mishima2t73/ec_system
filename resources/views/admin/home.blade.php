@@ -21,6 +21,11 @@
                             <div class = "col-sm-4">昨日</div><div class = "col-sm-4">個数：{{$yesterday_count}}</div><div class="col-sm-4" id = "yesterday_sales">金額：{{$yesterday_sales}}円</div>
 
                             <div class = "col-sm-4">今月</div><div class = "col-sm-4">個数：{{$month_count}}</div><div class="col-sm-4" id = "month_sales">金額：{{$month_sales}}円</div>
+                            <input type="hidden" id="month_sales_1" value = "{{$sales[0]}}">
+                            <input type="hidden" id="month_sales_2" value = "{{$sales[1]}}">
+                            <input type="hidden" id="month_sales_3" value = "{{$sales[2]}}">
+                            <input type="hidden" id="month_sales_4" value = "{{$sales[3]}}">
+                         
                         </div>
                         <button type="submit" class="btn btn-secondary m-1" onclick="location.href='{{route('sales_show')}}'">
                             売上一覧・注文明細

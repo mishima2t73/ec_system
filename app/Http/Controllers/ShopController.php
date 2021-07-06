@@ -86,5 +86,10 @@ class ShopController extends Controller
        //$products = product::find();
        return view('/shop/cart',["cart"=>$cart]);
     }
-
+    public function company_show(){
+        return view('/shop/company');
+    }
+    public function shopping_info(){
+        return view('/shop/shop_info');
+    }
 }
