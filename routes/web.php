@@ -94,9 +94,9 @@ Route::get('/admin/staff/staff_list','StaffsController@staff_list')->name('staff
 Route::get('/test', 'ProductController@wptest')->name('wptest');
 
 //売上一覧
-Route::get('admin/salse','Admin\HomeController@sales_show')->name('sales_show');
+Route::get('admin/sales','Admin\HomeController@sales_show')->name('sales_show');
 
-Route::get('admin/salse_analysis','Admin\HomeController@sales_analysis')->name('sales_analysis');
+Route::get('admin/sales_analysis','Admin\HomeController@sales_analysis')->name('sales_analysis');
 //明細
 Route::get('admin/sales/{sales_number}','Admin\HomeController@product_sale_detail')->name('showproduct_data');
 
@@ -121,6 +121,10 @@ Route::get('shop/cartlist','ShopController@cartlist')->name('cartlist');
 Route::get('shop/contact/', 'ContactController@input')->name('shop_contact'); // 入力画面
 Route::patch('shop/contact/', 'ContactController@confirm')->name('shop_confirm'); // 確認画面
 Route::post('shop/contact/', 'ContactController@finish'); // 完了画面
+//会社概要
+Route::get('shop/company/','ShopController@company_show')->name('company');
+Route::get('shop/shopping_info/','ShopController@shopping_info')->name('shop_info');
+
 //検索表示
 Route::get('shop/kensaku','KensakuController@kensaku_index')->name('kensaku_index');
 

@@ -162,8 +162,8 @@
 <footer class="fixed-bottom bg-white">
     <div class="container-fluid">
         <div class="row justify-content-center" style="margin-right:0px,margin-left:0px;">
-            <div class="col-2 text-center "><a class = "btn" href="{{route('shop_contact')}}">会社概要</a></div><div class="col-2 text-center"><a class = "btn" href="{{route('shop_contact')}}">お問い合わせ</a></div>
-            <div class="col-2 text-center "><a class = "btn" href="{{route('shop_contact')}}">送料</a></div><div class="col-2 text-center"><a class = "btn" href="{{route('shop_contact')}}">支払方法</a></div>
+            <div class="col-2 text-center "><a class = "btn" href="{{route('company')}}">会社概要</a></div><div class="col-2 text-center"><a class = "btn" href="{{route('shop_contact')}}">お問い合わせ</a></div>
+            <div class="col-2 text-center "><a class = "btn" href="{{route('shop_info')}}">送料</a></div><div class="col-2 text-center"><a class = "btn" href="{{route('shop_info')}}">支払方法</a></div>
         </div>
     </div>
     

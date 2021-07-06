@@ -42,12 +42,26 @@ class HomeController extends Controller
                                                                             count());
         //月初 
         $to_month= Carbon::now()->firstOfMonth();
-        //月末 次月の一秒前
+        //月末 
         $month_end = Carbon::now()->endOFMonth();
         //今月売上
         $month_sales = number_format(Product_sale::whereBetween('created_at',[$to_month,$month_end])->sum("sales_amount"));
+        $sales = [];
+        $sales[] = Product_sale::whereBetween('created_at',[$to_month,$month_end])->sum("sales_amount");
+        //$sales[] = [$to_month->subMonth(),$month_end->subMonth()];
+        $to_month->subMonth();
+        $month_end->subMonthsWithoutOverflow();
+        //6,[$to_month,$month_end],
+        $sales[] = Product_sale::whereBetween('created_at',[$to_month,$month_end])->sum("sales_amount");
+        $to_month->subMonth();
+        $month_end->subMonthsWithoutOverflow();
+        $sales[] =  Product_sale::whereBetween('created_at',[$to_month,$month_end])->sum("sales_amount");
+        $to_month->subMonth();
+        $month_end->subMonthsWithoutOverflow();
+        $sales[] =  Product_sale::whereBetween('created_at',[$to_month,$month_end])->sum("sales_amount");
+        //dd($month_sales,$sales);
         $month_count = number_format(Product_sale::whereBetween('created_at',[$to_month,$month_end])->count());
-        return view('admin.home',compact('today_sales','today_count','yesterday_sales','yesterday_count','month_sales','month_count'));
+        return view('admin.home',compact('today_sales','today_count','yesterday_sales','yesterday_count','month_sales','sales','month_count'));
     }
     
     public function sales_show(Request $request)
@@ -96,9 +110,9 @@ class HomeController extends Controller
         $month_sum = number_format(Product_sale::whereBetween('created_at',[$s_date,$e_date])->sum("sales_amount"));
  
         $products = new LengthAwarePaginator(
-            $products_list->forPage($request->page,9),
+            $products_list->forPage($request->page,8),
             count($products_list),
-            9,
+            8,
             $request->page,
             array('path'=>$request->url())
         );

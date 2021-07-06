@@ -21,7 +21,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
+    <div >
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('admin/home') }}">
@@ -42,16 +42,18 @@
                                 商品
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">商品一覧</a>
-                                <a class="dropdown-item" href="#">商品登録</a>
+                                <a class="dropdown-item" href="{{route('product.product_list')}}">商品一覧</a>
+                                <a class="dropdown-item" href="{{route('product.product_store')}}">商品登録</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="{{route('sales_show')}}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 注文・売上
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">注文詳細</a>
+                                <a class="dropdown-item" href="{{route('sales_show')}}">売上一覧</a>
+                            </div>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="#">売上分析</a>
                             </div>
                         </li>
@@ -59,8 +61,8 @@
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 スタッフ   </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">スタッフ一覧</a>
-                                <a class="dropdown-item" href="#">スタッフ登録</a>
+                                <a class="dropdown-item" href="{{route('staff_list')}}">スタッフ一覧</a>
+                                <a class="dropdown-item" href="{{route('admin.register')}}">スタッフ登録</a>
                             </div>
                         </li>
                     </ul>

@@ -89,13 +89,10 @@
                 </div>
                 </div>
             </div>
-        </div>
         </form>
-
-        <form action="" method="post">
-            <div class = "form-group">
-            <div class = "col"><button type="submit" class="btn btn-secondary m-1" onclick="">削除</button>
-            </div>
+        <form action="{{route('product_delete',$product->id)}}" method="post" onsubmit="return checkDelete()">
+            @csrf
+            <button type="submit" class = "btn btn-danger">削除</button>
         </form>
         </div>
 </div>
