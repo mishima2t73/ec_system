@@ -80,13 +80,12 @@ class ShopController extends Controller
     public function shop_cartshow(Request $request){
         //dd($request->session()->all());
         //dd($cartlist);
-        return view('/shop/cartlist');
         $cartdata= $request->session()->get('cartlist');
         $SessionProductId = array_column($cartdata, 'SessionProductId');
-        $SessionProductQuantity = array_column($cartData, 'SessionProductQuantity');
+        $SessionProductQuantity = array_column($cartdata, 'SessionProductQuantity');
         //dd($cart);
        //$products = product::find();
-       return view('/shop/cart',["cart"=>$cart]);
+      // return view('/shop/cart',["cartdata"=>$cartdata]);
     }
 
 }

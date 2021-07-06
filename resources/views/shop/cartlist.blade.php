@@ -43,7 +43,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($cartdata as $key=>data)
+                                @foreach($cartdata as $key=>$data)
                                 <tr class="text-center">
                                     <th class="align-middle">{{$key+=1}}</th>
                                     <td class="align-middle">
@@ -85,19 +85,17 @@
                                             \{{$totalPrice}}円
                                             </td>
                                         </tr>
-
-
                                         <tr class="text-right">
                                             <th class="border-0"></th>
                                             <td class="border-0">
-                                                <a class="btn btn-success"href="{{route('product_search'}}"role="button">
+                                                <a class="btn btn-success"href="{{route('product_search')}}"role="button">
                                                 買い物を続ける
                                             </a>
                                         </td>
                                         <td class="border-0"></td>
                                         <td class="border-0"></td>
                                         <td class="border-0">
-                                            {!! Form::open(['route'=>['orderFinalize','method'=>'post',1data['session_products_id']]])!!}
+                                            {!! Form::open(['route'=>['orderFinalize','method'=>'post',$data['session_products_id']]])!!}
                                                 {{Form::submit('注文を確定する',['name'=>'orderFinalize','class'=>'btn btn-primary'])}}
                                             {!! Form::close()!!}
                                         </td>
