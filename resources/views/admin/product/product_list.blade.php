@@ -39,7 +39,7 @@
         <div class = "row">
             
             <div class = "col-sm-1">番号：{{ $product->id}} </div>
-            <div class = "col-sm-2"><a href="/product/{{ $product->id}}"  >
+            <div class = "col-sm-2"><a href="/admin/product/{{ $product->id}}"  >
                 {{ $product->name}}
             </a></div>
             <div class = "col-sm-2">価格:{{ $product->price}}</div>
@@ -47,7 +47,7 @@
             <div class = "col-sm-2">登録日:{{ $product->created_at}}:</div>
             <div class = "col-sm-2">更新日:{{ $product->updated_at}}</div>
             <div class = "col-sm-1">
-                    <button type="submit" class = "btn btn-secondary m-1" onclick="location.href='/product/update/{{$product->id}}'">更新</button>
+                    <button type="submit" class = "btn btn-secondary m-1" onclick="location.href='/admin/product/update/{{$product->id}}'">更新</button>
                 </div>
                 
             <div class = "col-sm-1">

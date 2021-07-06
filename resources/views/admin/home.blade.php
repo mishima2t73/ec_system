@@ -16,29 +16,29 @@
                         <h3>売上</h3>
                         <div class = "row m-3 border-bottom">
 
-                            <div class = "col-sm-4">今日</div><div class = "col-sm-4">個数：1</div><div class="col-sm-4">金額：10000</div>
+                            <div class = "col-sm-4">今日</div><div class = "col-sm-4">個数：{{$today_count}}</div><div class="col-sm-4" id = "today_sales">金額：{{$today_sales}}円</div>
                             
-                            <div class = "col-sm-4">昨日</div><div class = "col-sm-4">個数：2</div><div class="col-sm-4">金額：63292</div>
+                            <div class = "col-sm-4">昨日</div><div class = "col-sm-4">個数：{{$yesterday_count}}</div><div class="col-sm-4" id = "yesterday_sales">金額：{{$yesterday_sales}}円</div>
 
-                            <div class = "col-sm-4">今月</div><div class = "col-sm-4">個数：32</div><div class="col-sm-4">金額：142000</div>
+                            <div class = "col-sm-4">今月</div><div class = "col-sm-4">個数：{{$month_count}}</div><div class="col-sm-4" id = "month_sales">金額：{{$month_sales}}円</div>
                         </div>
-                        <button type="submit" class="btn btn-secondary m-1" onclick="location.href=''">
-                            注文詳細
+                        <button type="submit" class="btn btn-secondary m-1" onclick="location.href='{{route('sales_show')}}'">
+                            売上一覧・注文明細
                         </button>
                         <button type="submit" class="btn btn-secondary m-1" onclick="location.href=''">
                             売上分析
                         </button>
                     </div>
                     <div class="row">
-                        <div class = "col">
+                        <div class = "col-5">
                             <h3 class ="h3 mt-3">商品管理</h3>
                             <div class="row">
-                            <div class="col-4">
-                                    <button type="submit" class="btn btn-secondary m-1" onclick="location.href='{{route('product.product_store')}}'">
+                            <div class="col-sm-5">
+                                    <button type="submit" class="btn btn-secondary m-1" onclick="location.href='{{route('product.product_add')}}'">
                                         商品登録
                                     </button>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-sm-5">
                                     <button type="submit" class="btn btn-secondary m-1" onclick="location.href='{{route('product.product_list')}}'">
                                         商品一覧
                                     </button>
@@ -46,12 +46,12 @@
                             </div>
                             <h3 class ="h3 mt-3">配送設定</h3>
                             <div class="row">
-                                <div class="col-sm-4" style="padding-right: 10px">
+                                <div class="col-sm-5" style="padding-right: 10px">
                                     <button type="submit" class="btn btn-secondary m-1"  onclick="location.href='{{ route('staff_list') }}'">
                                         配送設定一覧
                                     </button>
                                 </div>
-                                <div class="col-sm-4">
+                                <div class="col-sm-5">
                                     <button type="submit" class="btn btn-secondary m-1" onclick="location.href='{{ route('admin.register') }}'">
                                         日程登録
                                     </button>
@@ -60,7 +60,7 @@
                             </div>
                             <h3 class ="h3 mt-3">スタッフ</h3>
                             <div class="row">
-                                <div class="col-sm-4" style="padding-right: 10px">
+                                <div class="col-sm-5" style="padding-right: 10px">
                                     <button type="submit" class="btn btn-secondary m-1"  onclick="location.href='{{ route('staff_list') }}'">
                                         スタッフ一覧
                                     </button>
@@ -72,8 +72,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class = "col">
-                            <div>calender</div>
+                        <div class = "col-6">
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+                            <div>
+                                <canvas id="stage">
+
+                                </canvas>
+                            </div>
                         </div>
                     </div>
                 </div>

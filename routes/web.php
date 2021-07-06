@@ -68,9 +68,8 @@ Route::get('/admin/product/product_add','ProductController@product_addshow')->na
 Route::post('/admin/product/product_store','ProductController@exe_store')->name('product.product_store');
 
 
-//商品一覧
+//商品一覧、カテゴリー絞り込み、並び替え
 Route::get('/admin/product/product_list','ProductController@product_list')->name('product.product_list');
-
 
 //商品詳細
 Route::get('/admin/product/{id}','ProductController@product_data')->name('product.product_data');
@@ -80,7 +79,6 @@ Route::get('/admin/product/update/{id}','ProductController@product_updateshow')-
 
 //商品情報更新
 Route::post('/admin/product/update','ProductController@product_update')->name('product_update');
-
 
 //商品削除
 Route::post('/admin/product/delete/{id}','ProductController@product_delete')->name('product_delete');
@@ -95,10 +93,22 @@ Route::get('/admin/staff/staff_list','StaffsController@staff_list')->name('staff
 //test
 Route::get('/test', 'ProductController@wptest')->name('wptest');
 
+//売上一覧
+Route::get('admin/salse','Admin\HomeController@sales_show')->name('sales_show');
+
+Route::get('admin/salse_analysis','Admin\HomeController@sales_analysis')->name('sales_analysis');
+//明細
+Route::get('admin/sales/{sales_number}','Admin\HomeController@product_sale_detail')->name('showproduct_data');
+
+//test購入ページ表示
+Route::get('/test_buy','Admin\HomeController@test_buypage')->name('testbuypage');
+
+
 //消費者向けショップ画面----------------------------------
 //top
 Route::get('/top','ShopController@topview')->name('top');
-
+//カテゴリー絞り込み
+//Route::get('/category','ShopController@shop_category')->name('shop_calegory');
 //商品詳細
 Route::get('shop/product/{id}','ShopController@showproduct_data')->name('showproduct_data');
 //カート
