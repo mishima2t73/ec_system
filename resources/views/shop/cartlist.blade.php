@@ -43,10 +43,10 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($cartData as $key=>$data)
+                                @foreach($cartdata as $key=>data)
                                 <tr class="text-center">
                                     <th class="align-middle">{{$key+=1}}</th>
-                                    <td class=>"align-middle">
+                                    <td class="align-middle">
                                         {{$data['product_name']}}
                                         </td>
                                         <td class="align-middle">
@@ -64,13 +64,13 @@
 
                                             <td class="border-0 align-middle">
                                             {!! Form::open(['route'=>['itemRemove','method'=>'post',$data['session_product_id']]])!!}
-                                            {{Form::submit('削除',['name'=>delete_product_id'.'class'=>'btn btn-danger'])}}
+                                            {{Form::submit('削除',['name'=>'delete_product_id','class'=>'btn btn-danger'])}}
                                             {{From::hidden('product_id',$data['session_product_id'])}}
                                             {{From::hidden('product_quantity',$data['session_quantity'])}}
                                             {!! From::close()!!}
                                             </td>
                                         </tr>
-                                    @endforeach
+                                @endforeach
 
                                     <tr class="text-center">
                                         <th class="border-bottom-0 align-middle"></th>

@@ -115,6 +115,8 @@ Route::get('shop/product/{id}','ShopController@showproduct_data')->name('showpro
 Route::post('shop/cartin','ShopController@shop_cartin')->name('shop_cartin');
 //カート表示
 Route::get('shop/cart','ShopController@shop_cartshow')->name('show_cart');
+Route::get('shop/cartlist','ShopContrller@cartData')->name('cartData');
+Route::get('shop/cartlist','ShopController@cartlist')->name('cartlist');
 //お問い合わせ
 Route::get('shop/contact/', 'ContactController@input')->name('shop_contact'); // 入力画面
 Route::patch('shop/contact/', 'ContactController@confirm')->name('shop_confirm'); // 確認画面
