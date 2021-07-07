@@ -21,7 +21,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body style="background-color:#cfd6e0">
+<body style="background-color:#e5e9ee">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -113,7 +113,7 @@
                             <img src="/icon/outline_shopping_cart_black_24dp.png" alt="cart">
                             </span></a>
                         @if (Auth()->check())
-                        <a class="nav-link" href="/mypage/{{ Auth::user()->id}}/home">
+                        <a class="nav-link" href="{{route('user_mypage')}}">
                             Mypage
                         </a>
                         @endif
@@ -131,7 +131,7 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ Auth::user()->name }} さん<span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -147,6 +147,7 @@
                                 </div>
                             </li>
                         @endguest
+                        
                     </ul>
                 </div>
             </div>

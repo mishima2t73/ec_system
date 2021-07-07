@@ -29,6 +29,7 @@ class ProductSalesSeeder extends Seeder
             $date = rand($min, $max);
             // タイムスタンプ => Y-m-d に変換    
             $date = date('Y-m-d', $date);
+            
             $sales_quantity = $faker->randomElement($dept);
             $total_price = 0;
             //$total_quantity =0;合計個数未使用

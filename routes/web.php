@@ -128,8 +128,12 @@ Route::get('shop/shopping_info/','ShopController@shopping_info')->name('shop_inf
 //検索表示
 Route::get('shop/kensaku','KensakuController@kensaku_index')->name('kensaku_index');
 
+//ユーザー　マイページ
+Route::get('user/mypage','User\HomeController@index')->name('user_mypage');
+Route::get('user/mypage/account','User\HomeController@account_show')->name('user_account');
+Route::get('user/mypage/account_form','User\HomeController@account_form')->name('user_account_form');
 
-
+Route::get('user/mypage/address','User\HomeController@address_show')->name('user_address');
 //管理者用登録ルート
 Route::group(['middleware' => ['auth:admin', 'can:admin']], function () {
   //ユーザー登録
