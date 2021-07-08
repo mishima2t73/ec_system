@@ -132,12 +132,16 @@ Route::get('shop/kensaku','KensakuController@kensaku_index')->name('kensaku_inde
 Route::get('user/mypage','User\HomeController@index')->name('user_mypage');
 Route::get('user/mypage/account','User\HomeController@account_show')->name('user_account');
 Route::get('user/mypage/account_form','User\HomeController@account_form')->name('user_account_form');
+Route::post('user/mypage/account_form','User\HomeController@account_update')->name('user_account_update');
+Route::get('user/mypage/password_form','User\HomeController@password_form')->name('password_form');
 
+Route::post('user/mypage/password_form','User\HomeController@user_password_update')->name('user_password_update');
 Route::get('user/mypage/address','User\HomeController@address_show')->name('user_address');
+
 //管理者用登録ルート
 Route::group(['middleware' => ['auth:admin', 'can:admin']], function () {
   //ユーザー登録
-  Route::get('/admin/staff/staff_add','Admin\Auth\RegisterController@showRegistrationForm')->name('staff_registshow');
+Route::get('/admin/staff/staff_add','Admin\Auth\RegisterController@showRegistrationForm')->name('staff_registshow');
   //Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-  Route::get('/admin/staff/staff_add','Admin\Auth\RegisterController@create')->name('staff_regist');
+Route::get('/admin/staff/staff_add','Admin\Auth\RegisterController@create')->name('staff_regist');
 });

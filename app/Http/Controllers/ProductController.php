@@ -109,7 +109,7 @@ class ProductController extends Controller
         $pdata->fill($fdata)->save();
         //product::update($id);
      return redirect('product/'.$id);
-
+ 
     }
     //delete
     public function product_delete($id){

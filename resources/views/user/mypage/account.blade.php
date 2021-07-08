@@ -4,6 +4,15 @@
 <div class="container">
     <div class = "bg-white m-3 p-4">
         <h3>アカウント情報</h3>
+        @if (session('flash_message_account'))
+            <div class="alert alert-primary">
+                {{ session('flash_message_account') }}
+            </div>
+        @endif
+
+        <main class="mt-4">
+            @yield('content')
+        </main>
         <div class = "list-group-item p-3">
             <div class = "col p-2">お名前：{{ $user_data->name}} </div>
             <div class = "col p-2">メールアドレス：{{ $user_data->email}} </div>
@@ -15,7 +24,7 @@
             </button>
         </div>
         <div class = "list-group-item">
-            <button type="submit" class="btn btn-secondary m-1"  onclick="location.href=''">
+            <button type="submit" class="btn btn-secondary m-1"  onclick="location.href='{{route('password_form')}}'">
                 パスワード変更
             </button>
         </div>
