@@ -23,8 +23,8 @@
                 アカウント情報変更
             </button>
         </div>
-        <div class = "list-group-item">
-            <button type="submit" class="btn btn-secondary m-1"  onclick="location.href='{{route('password_form')}}'">
+        <div class = "list-group-item"> 
+            <button type="submit" class="btn btn-secondary m-1"  onclick="location.href='{{route('user_password_form')}}'">
                 パスワード変更
             </button>
         </div>

@@ -20,7 +20,7 @@ class user_address extends Seeder
         $min = strtotime($start);
         $max = strtotime($end);
         $genlist = ["男","女"];
-
+        
         for($i = 0;$i < 100;$i++){
             $user_id = $i;
             $date = rand($min, $max);
