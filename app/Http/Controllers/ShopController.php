@@ -12,32 +12,43 @@ class ShopController extends Controller
     //top
     public function topview(Request $request){
         $category = $request->input('category', 'default');
-        $subcategory = $request->input('subcategory', '');
+        $subcategory = $request->input('subcategory', 'default');
         $sortname = $request->input('sortname','id');
         $order = $request->input('order','desc');
         $makerlist = DB::table('makerlist')->where('display','1')->get('maker');
         
+
         //dd($subcategory,$makerlist);
         if($category == "default"){
             //$products = DB::table('products');
             $products = Product::orderBy($sortname,$order)
                                     ->paginate(9);
         }
-        if($category == "maker" || $category == "CPU" ){
+        if($category == "maker"){
             $products = Product::where($category,$subcategory)
                                 ->orderBy($sortname,$order)
                                 ->paginate(9);
         }
-        if($category == "price" || $category == "display || $category == hdd_ssd" ){
+        if($category == "price" || $category == "display" || $category == "hdd_ssd_space" ){
             $products = Product::wherebetween($category,$subcategory)
                                 ->orderBy($sortname,$order)
                                 ->paginate(9);
-            $subcategory = "pricebet";
+            //$subcategory = "sub";
         }
+        if($category == "cpu" ){
+            $products = Product::where($category,'like',"%$subcategory%")
+                                ->orderBy($sortname,$order)
+                                ->paginate(9);
+        //dd($products);           
+        }
+        //dd($products->isEmpty());
+        
+
         //dd($products);                
         
         return view('/shop/top',compact("products","sortname","order","category","subcategory","makerlist"));
     }
+
     public function shop_category(Request $request){
         
         return view('/shop/top',compact("products","sortname","order"));      
@@ -45,10 +56,10 @@ class ShopController extends Controller
     
     //商品詳細 Route::get('shop/product/{id}','ShopController@showproduct_data')->name('showproduct_data');
     public function showproduct_data($id){
+        $makerlist = DB::table('makerlist')->where('display','1')->get('maker');
         $product_data = product::find($id);
         return view('shop/shop_product_data',[
-            'product'=>$product_data
-        ]);
+            'product'=>$product_data,'makerlist'=>$makerlist]);
     }
      /*
         if ($request->session()->has('id')){

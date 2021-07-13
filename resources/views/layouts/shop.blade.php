@@ -68,10 +68,10 @@
                                 画面サイズ
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">11～12.5</a>
-                                <a class="dropdown-item" href="#">13～14</a>
-                                <a class="dropdown-item" href="#">15～15.6</a>
-                                <a class="dropdown-item" href="#">17～</a>
+                                <a class="dropdown-item" href="{{route('top',['category'=>'display','subcategory' => [11.0,13.0]])}}">11～12.5</a>
+                                <a class="dropdown-item" href="{{route('top',['category'=>'display','subcategory' => [13.0,14.0]])}}">13～14</a>
+                                <a class="dropdown-item" href="{{route('top',['category'=>'display','subcategory' => [15.0,16.0]])}}">15～15.6</a>
+                                <a class="dropdown-item" href="{{route('top',['category'=>'display','subcategory' => [17.0,30.0]])}}">17～</a>
                                 
                             </div>
                         </li>
@@ -81,11 +81,12 @@
                                 CPU
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Core i3</a>
-                                <a class="dropdown-item" href="#">Core i5</a>
-                                <a class="dropdown-item" href="#">Core i7</a>
+                                <a class="dropdown-item" href="{{route('top',['category'=>'cpu','subcategory' => "celeron"])}}">celeron</a>
+                                <a class="dropdown-item" href="{{route('top',['category'=>'cpu','subcategory' => "i3"])}}">Core i3</a>
+                                <a class="dropdown-item" href="{{route('top',['category'=>'cpu','subcategory' => "i5"])}}">Core i5</a>
+                                <a class="dropdown-item" href="{{route('top',['category'=>'cpu','subcategory' => "i7"])}}">Core i7</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Ryzen</a>
+                                <a class="dropdown-item" href="{{route('top',['category'=>'cpu','subcategory' => "AMD"])}}">Ryzen</a>
                                 
                             </div>
                         </li>
@@ -94,10 +95,11 @@
                                 HDD/SSD
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">～128GB</a>
-                                <a class="dropdown-item" href="#">128GB～256GB</a>
-                                <a class="dropdown-item" href="#">256GB～480GB</a>
-                                <a class="dropdown-item" href="#">480GB～</a>
+                                <a class="dropdown-item" href="{{route('top',['category'=>'hdd_ssd_space','subcategory' => [32,128]])}}">～128GB</a>
+                                <a class="dropdown-item" href="{{route('top',['category'=>'hdd_ssd_space','subcategory' => [129,256]])}}">128GB～256GB</a>
+                                <a class="dropdown-item" href="{{route('top',['category'=>'hdd_ssd_space','subcategory' => [256,480]])}}">256GB～480GB</a>
+                                <a class="dropdown-item" href="{{route('top',['category'=>'hdd_ssd_space','subcategory' => [480,0]])}}">480GB～</a>
+                                <a class="dropdown-item" href="{{route('top',['category'=>'hdd_ssd_space','subcategory' => [1,20]])}}">1TB～</a>
                                 
                             </div>
                         </li>

@@ -1,5 +1,5 @@
 
-@extends('layouts.shop')
+@extends('layouts.shop_simple')
 
 @section('content')
 <div class="container">
