@@ -105,29 +105,12 @@ class HomeController extends Controller
     }
     public function address_update(address_update_request $request)
     {
-        $id = Auth::user()->id;
-        $user_address = user_address::find($id);
-        //$user_data = $user_data2;
-        $re_datad = $request->all();
-        //$tel_data = ;
-        unset($re_datad['_token']);
-    
-        //dd($re_data,$user_data2);
-        \DB::enableQueryLog();
+        $user_id  = Auth::user()->id;
+        $user_address = user_address::find($user_id);
+        $up_data = $request->all();
         //$user_data2->fill($re_data)->save();
-        //$user_data2->fill($re_data)->save();
-        $user_address->update(
-            ['post_code'=>$re_datad['post_code']],
-            ['prefectures'=>$re_datad['prefecture']],
-            ['city'=>$re_datad['city']],
-            ['address'=>$re_datad['address']],
-            ['address2'=>$re_datad['address2']],
-        );
-        //dd(\DB::getQueryLog(),$user_data2,$re_data);
-        //dd($user_data2->fill($re_data)->tosql(),$user_data2->getBindings());
-        //$user_data2->fill([])->save();
-        //$user_data2->update([$user_data2]);
-        return redirect('user/mypage')->with('flash_message_account', '住所情報を変更しました');
+        $user_address->fill($up_data)->save();
+        return view("user.mypage.home");
     }
 
 }

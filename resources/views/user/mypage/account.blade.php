@@ -15,6 +15,7 @@
         </main>
         <div class = "list-group-item p-3">
             <div class = "col p-2">お名前：{{ $user_data->name}} </div>
+            <div class = "col p-2">性別：{{ $user_data2->gender}} </div>
             <div class = "col p-2">メールアドレス：{{ $user_data->email}} </div>
             <div class = "col p-2">電話番号：{{ $user_data2->tel}} </div>
         </div>

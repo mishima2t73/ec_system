@@ -8,5 +8,6 @@ class user_address extends Model
 {
     //
     protected $table = 'user_address';
-    protected $fillable = ['tel']; //保存したいカラム名が1つの場合
+    //protected $fillable = ['tel']; //保存したいカラム名が1つの場合
+    protected $guarded = ['_token'];
 }
