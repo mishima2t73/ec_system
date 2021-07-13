@@ -13,7 +13,7 @@ class address_update_request extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,6 +25,10 @@ class address_update_request extends FormRequest
     {
         return [
             //
+            'post_code' =>['min:7','required'],
+            'prefecture' =>['min:3','required'],
+            'city' =>['required'],
+            'address' =>['required'],
         ];
     }
 }

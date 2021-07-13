@@ -15,9 +15,11 @@ class ShopController extends Controller
         $subcategory = $request->input('subcategory', '');
         $sortname = $request->input('sortname','id');
         $order = $request->input('order','desc');
-        //dd($subcategory);
+        $makerlist = DB::table('makerlist')->where('display','1')->get('maker');
+        
+        //dd($subcategory,$makerlist);
         if($category == "default"){
-            $products = DB::table('products');
+            //$products = DB::table('products');
             $products = Product::orderBy($sortname,$order)
                                     ->paginate(9);
         }
@@ -34,7 +36,7 @@ class ShopController extends Controller
         }
         //dd($products);                
         
-        return view('/shop/top',compact("products","sortname","order","category","subcategory"));
+        return view('/shop/top',compact("products","sortname","order","category","subcategory","makerlist"));
     }
     public function shop_category(Request $request){
         

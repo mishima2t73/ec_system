@@ -35,7 +35,6 @@ class account_update_request extends FormRequest
 {
     return [
         'name.min' => '２文字以上入力してください',
-        
     ];
 }
 }

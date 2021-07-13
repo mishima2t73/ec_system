@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMakerlist extends Migration
+class CreateCategorylist extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateMakerlist extends Migration
      */
     public function up()
     {
-        Schema::create('makerlist', function (Blueprint $table) {
+        Schema::create('categorylist', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->String('maker');
+            $table->String('category');
+            $table->String('value');
             $table->integer('display');//shop画面で表示するか否か
             $table->timestamps();
         });

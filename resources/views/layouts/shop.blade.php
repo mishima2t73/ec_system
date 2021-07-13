@@ -46,11 +46,9 @@
                                 メーカー
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{route('top',['category'=>'maker','subcategory' => 'Dell'])}}">Dell</a>
-                                <a class="dropdown-item" href="{{route('top',['category'=>'maker','subcategory' => 'Panasonic'])}}">Panasonic</a>
-                                <a class="dropdown-item" href="{{route('top',['category'=>'maker','subcategory' => 'Dynabook'])}}">Dynabook</a>
-                                <a class="dropdown-item" href="{{route('top',['category'=>'maker','subcategory' => 'Apple'])}}">Apple</a>
-                                <a class="dropdown-item" href="{{route('top',['category'=>'maker','subcategory' => 'iiyama'])}}">iiyama</a>
+                                @foreach ($makerlist as $item)
+                                <a class="dropdown-item" href="{{route('top',['category'=>'maker','subcategory' => $item->maker])}}">{{$item->maker}}</a>    
+                                @endforeach
                                 <a class="dropdown-item" href="{{route('top',['category'=>'maker','subcategory' => 'その他'])}}">その他</a>
                             </div>
                         </li>

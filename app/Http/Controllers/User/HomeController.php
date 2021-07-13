@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 use App\User;
 use App\user_address;
 use App\Http\Requests\account_update_request;
-
+use App\Http\Requests\address_update_request;
 class HomeController extends Controller
 {
     public function __construct(){
@@ -103,21 +103,32 @@ class HomeController extends Controller
         //dd($user_data);
         return view('user.mypage.address_update',compact("user_data"));
     }
-    public function address_update(Request $request)
+    public function address_update(address_update_request $request)
     {
         $id = Auth::user()->id;
         $user_data2 = user_address::find($id);
-        
+        //$user_data = $user_data2;
         $re_data =  $request->all();
         //$tel_data = ;
         unset($re_data['_token']);
-        //unset($re_data['_token']);
-
-        dd($re_data,$user_data2);
-
+    
+        //dd($re_data,$user_data2);
+        \DB::enableQueryLog();
         //$user_data2->fill($re_data)->save();
-        $user_data2->fill([])->save();
-        $user_data2->update($user_data2);
+        //$user_data2->fill($re_data)->save();
+        $user_data2->update(
+            ['post_code'=>$re_data['post_code']],
+            ['prefectures'=>$re_data['prefecture']],
+            ['city'=>$re_data['city']],
+            ['address'=>$re_data['address']],
+            ['address2'=>$re_data['address2']],
+            
+        );
+        //dd(\DB::getQueryLog(),$user_data2,$re_data);
+        //dd($user_data2->fill($re_data)->tosql(),$user_data2->getBindings());
+        //$user_data2->fill([])->save();
+        //$user_data2->update([$user_data2]);
+        $user_data2 = user_address::find($id);
         return redirect('user/mypage')->with('flash_message_account', '住所情報を変更しました');
     }
 
