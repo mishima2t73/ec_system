@@ -3,12 +3,16 @@
 @section('content')
 <div class ="container">
     <h2>商品登録</h2>
+    メーカー・OSの一覧設定はこちら
+    <div class="">
+        <button type="submit" class ="btn btn-primary" onclick="location.href='{{route('product_setting')}}'">商品登録設定</button>
+        <a href="/admin/product_setting">setting</a>
+    </div>
     <form enctype="multipart/form-data" method="POST" action="{{route('product.product_store')}}" onsubmit="return checkSubmit()">
         @csrf
         <div class = "form-group">
             <label for="name">商品名</label>
             <input id = "name" name = "name" type="text" class = "form-control">
-            
             @if ($errors->has('name'))
                 <div class = "test-danger">
                     {{$errors->first('name')}}
@@ -18,7 +22,12 @@
         <div class = row>
             <div class = "form-group col">
                 <label for="maker">メーカー</label>
-                <input id = "maker" name ="maker" type="text" class = "form-control">
+                <select class="form-control" name="maker" id="maker_select" required>
+                    <option value="">選択してください</option>
+                    @foreach ($makerlist as $maker)
+                        <option  value= {{$maker->value}} >{{$maker->value}}</option>
+                    @endforeach
+                </select>
                 @if ($errors->has('maker'))
                     <div class = "test-danger">
                         {{$errors->first('maker')}}
@@ -59,7 +68,7 @@
             <div class = "form-group col">
                 <label for="stock">在庫</label>
                 <div style="width:30%">
-                    <input id = "stock" name = "stock" type="text" class = "form-control">
+                    <input id = "stock" type="text" name = "stock" class = "form-control">
                 </div>
                 @if ($errors->has('stock'))
                     <div class = "test-danger">
@@ -147,8 +156,9 @@
             <div class = "form-group col">
                 <label for="condition">PCタイプ</label>
                 <select class="form-control" id="pctype" name = "pctype">
-                    <option>デスクトップPC</option>
-                    <option>ノートPC</option>
+                    <option >選択してください</option>
+                    <option　value = "デスクトップPC">デスクトップPC</option>
+                    <option value = "ノートPC">ノートPC</option>
                   </select>
             </div>
         </div>

@@ -17,7 +17,7 @@ class ProductSalesSeeder extends Seeder
         DB::table('product_sales_details')->truncate(); 
         $faker = Faker\Factory::create('ja_JP');
         $start = Carbon::create("2021","4","1" );
-        $end = Carbon::create("2021","7","5");
+        $end = Carbon::create("2021","7","14");
         $min = strtotime($start);
         $max = strtotime($end);
         for ($i = 0; $i < 100;$i++){

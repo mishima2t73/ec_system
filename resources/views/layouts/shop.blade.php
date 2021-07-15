@@ -47,7 +47,7 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 @foreach ($makerlist as $item)
-                                <a class="dropdown-item" href="{{route('top',['category'=>'maker','subcategory' => $item->maker])}}">{{$item->maker}}</a>    
+                                <a class="dropdown-item" href="{{route('top',['category'=>'maker','subcategory' => $item->value])}}">{{$item->value}}</a>    
                                 @endforeach
                                 <a class="dropdown-item" href="{{route('top',['category'=>'maker','subcategory' => 'その他'])}}">その他</a>
                             </div>

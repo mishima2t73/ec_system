@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Mail\ContactMail;
 use  Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
 
 class ContactController extends Controller
 {
+    
     //入力画面
     public function input()
     {
@@ -15,7 +17,9 @@ class ContactController extends Controller
             'title'=>'お問い合わせ',
             'subtitle'=>'入力画面',
         );
-        return view('shop.contact.form')->with($hash);
+        $makerlist = DB::table('categorylist')->where('category','maker')->get('value');
+        
+        return view('shop.contact.form',compact('makerlist'))->with($hash);
     }
 
     //確認画面
@@ -26,7 +30,8 @@ class ContactController extends Controller
             'title' => 'お問い合わせ',
             'subtitle' => '確認画面',
         );
-        return view('shop.contact.confirm')->with($hash);
+        $makerlist = DB::table('categorylist')->where('category','maker')->get('value');
+        return view('shop.contact.confirm',compact('makerlist'))->with($hash);
     }
 
     public function finish(Request $request)
@@ -39,7 +44,7 @@ class ContactController extends Controller
             'title' => 'お問い合わせ',
             'subtitle' => '完了画面',
         );
-
-        return view('shop.contact.finish')->with($hash);
+        $makerlist = DB::table('categorylist')->where('category','maker')->get('value');
+        return view('shop.contact.finish',compact('makerlist'))->with($hash);
     }
 }

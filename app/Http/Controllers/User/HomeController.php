@@ -13,6 +13,7 @@ use App\User;
 use App\user_address;
 use App\Http\Requests\account_update_request;
 use App\Http\Requests\address_update_request;
+
 class HomeController extends Controller
 {
     public function __construct(){

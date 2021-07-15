@@ -5,18 +5,25 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\product;
 use Illuminate\Http\Request;
+
 use App\Http\Requests\ProductRequest;
 
 class ShopController extends Controller
 {
+
     //top
     public function topview(Request $request){
+        /*if (!$request->session()->exists('category_list')){
+            $makerlist = DB::table('categorylist')->where('category','maker')->get('value');
+            $request->session()->put('category_list',$makerlist);
+        }*/
+
         $category = $request->input('category', 'default');
         $subcategory = $request->input('subcategory', 'default');
         $sortname = $request->input('sortname','id');
         $order = $request->input('order','desc');
-        $makerlist = DB::table('makerlist')->where('display','1')->get('maker');
-        
+        //$makerlist = DB::table('makerlist')->where('display','1')->get('maker');
+        $makerlist = DB::table('categorylist')->where('category','maker')->get('value');
 
         //dd($subcategory,$makerlist);
         if($category == "default"){
@@ -56,7 +63,9 @@ class ShopController extends Controller
     
     //商品詳細 Route::get('shop/product/{id}','ShopController@showproduct_data')->name('showproduct_data');
     public function showproduct_data($id){
-        $makerlist = DB::table('makerlist')->where('display','1')->get('maker');
+        //$makerlist = DB::table('makerlist')->where('display','1')->get('maker');
+        $makerlist = DB::table('categorylist')->where('category','maker')->get('value');
+        //dd($makerlist,$categorylist);
         $product_data = product::find($id);
         return view('shop/shop_product_data',[
             'product'=>$product_data,'makerlist'=>$makerlist]);
@@ -102,9 +111,11 @@ class ShopController extends Controller
         return view('/shop/cart',["cartdata"=>$cartdata]);
     }
     public function company_show(){
-        return view('/shop/company');
+        $makerlist = DB::table('categorylist')->where('category','maker')->get('value');
+        return view('/shop/company',compact('makerlist'));
     }
     public function shopping_info(){
-        return view('/shop/shop_info');
+        $makerlist = DB::table('categorylist')->where('category','maker')->get('value');
+        return view('/shop/shop_info',compact('makerlist'));
     }
 }

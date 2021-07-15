@@ -72,7 +72,7 @@ Route::post('/admin/product/product_store','ProductController@exe_store')->name(
 Route::get('/admin/product/product_list','ProductController@product_list')->name('product.product_list');
 
 //商品詳細
-Route::get('/admin/product/{id}','ProductController@product_data')->name('product.product_data');
+Route::get('/admin/product/list/{id}','ProductController@product_data')->name('product.product_data');
 
 //商品更新ページ表示
 Route::get('/admin/product/update/{id}','ProductController@product_updateshow')->name('product_updateshow');
@@ -83,7 +83,10 @@ Route::post('/admin/product/update','ProductController@product_update')->name('p
 //商品削除
 Route::post('/admin/product/delete/{id}','ProductController@product_delete')->name('product_delete');
 //  return redirect('/product/product_list');
-  
+//商品登録設定
+Route::get('/admin/product/setting','ProductController@product_setting_show')->name('product_setting');
+Route::post('/admin/product/setting','ProductController@product_setting_add')->name('product_list_add');
+Route::post('/admin/product/setting/delete','ProductController@product_setting_delete')->name('product_list_delete');
 //スタッフ一覧
 Route::get('/admin/staff/staff_list','StaffsController@staff_list')->name('staff_list');
 
