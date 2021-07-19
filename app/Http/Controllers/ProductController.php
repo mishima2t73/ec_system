@@ -25,9 +25,9 @@ class ProductController extends Controller
     //list
     public function product_list(Request $request)
     {
+        //product.product_list
         $sortname = $request->input('sortname','id');
         $order = $request->input('order','desc');
-
 
         //$products = product::all();
         $products = DB::table('products');
@@ -47,15 +47,12 @@ class ProductController extends Controller
     //add show
     public function product_addshow()
     {
-        $makerlist = DB::table('categorylist')->where('category','maker')->get('value');
-        $oslist = DB::table('categorylist')->where('category','os')->get('value');
+        $makerlist = DB::table('categorylists')->where('category','maker')->get('value');
+        $oslist = DB::table('categorylists')->where('category','os')->get('value');
         return view('admin/product/product_add',compact('makerlist','oslist'));
     }
     //product_store ProductRequest
     public function exe_store(ProductRequest $request){
-        if ($request){
-            return view('admin.home');
-        }
         $product = $request->all();
         if($file = $request->uploadfile){
             $file_name = time() . $file->getClientOriginalName();
@@ -79,7 +76,7 @@ class ProductController extends Controller
             //abort(500);
         }
         */
-        return redirect('/product/product_list');
+        return redirect('admin/product/product_list');
 
     }
     //update show product_updateshow

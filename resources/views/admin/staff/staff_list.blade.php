@@ -1,5 +1,5 @@
 @Auth
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
    
@@ -11,18 +11,19 @@
             <ul>
                 <h3>並べ替え</h3>
                 <li class="list-group-item">
-                    <a href="/staff/staff_list?sortname=id">スタッフID</a>
+                    <a href="{{route('staff_list',['sortname'=>'id','order'=>$order])}}">スタッフID</a>
                 </li>
                 <li class="list-group-item">
-                    <a href="/staff/staff_list?sortname=name">名前</a>
+                    <a href="{{route('staff_list',['sortname'=>'name','order'=>$order])}}">名前</a>
                 </li>
             </ul>
             <ul>
                 <li class="list-group-item">
-                    <a href="/staff/staff_list?sortname={{$sortname}}&order=asc">昇順</a>
+                    <a href="
+                    {{route('staff_list',['sortname'=>$sortname,'order'=>'asc'])}}">昇順</a>
                 </li>
                 <li class="list-group-item">
-                    <a href="/staff/staff_list?sortname={{$sortname}}&order=desc">降順</a>
+                    <a href="{{route('staff_list',['sortname'=>$sortname,'order'=>'desc'])}}">降順</a>
                 </li>
             </ul>
             </div>

@@ -9,31 +9,49 @@
             <div class = "list-group">
             <ul>
                 <h3>並べ替え</h3>
+                
                 <li class="list-group-item">
-                    <a href="/product/product_list?sortname=id">商品ID</a>
+                    
+                    <a href="{{route('product.product_list',['sortname'=>'id','order'=>$order])}}">商品ID</a>
                 </li>
                 <li class="list-group-item">
-                    <a href="/product/product_list?sortname=name">商品名</a>
+                    <a href="{{route('product.product_list',['sortname'=>'name','order'=>$order])}}">商品名</a>
                 </li>
                 <li class="list-group-item">
-                    <a href="/product/product_list?sortname=price">価格</a>
+                    <a href="{{route('product.product_list',['sortname'=>'price','order'=>$order])}}">価格</a>
                 </li>
             </ul>
             <ul>
                 <li class="list-group-item">
-                    <a href="/product/product_list?sortname={{$sortname}}&order=asc">昇順</a>
+                    <a href="/admin/product/product_list?sortname={{$sortname}}&order=asc">昇順</a>
                 </li>
                 <li class="list-group-item">
-                    <a href="/product/product_list?sortname={{$sortname}}&order=desc">降順</a>
+                    <a href="/admin/product/product_list?sortname={{$sortname}}&order=desc">降順</a>
                 </li>
             </ul>
+            
             </div>
+            <button type="submit" class="btn btn-secondary float-right" style="margin: auto" onclick="location.href='{{route('product.product_add')}}'">
+                商品登録
+            </button>
         </div>
+        
     <div class = "col">
     <h2>商品一覧</h2>
-    <button type="submit" class="btn btn-secondary m-1" onclick="location.href='{{route('product.product_add')}}'">
-        商品登録
-    </button>
+    @if ($sortname == "id")
+        登録ID>
+    @elseif($sortname == "name")
+        商品名>
+    @elseif($sortname == "price")
+        価格>
+    @endif
+
+    @if ($order == "asc")
+        昇順
+    @elseif($order == "desc")
+        降順
+    @endif
+  
     @foreach ($products as $product)
     <div class = "list-group-item">
         <div class = "row">

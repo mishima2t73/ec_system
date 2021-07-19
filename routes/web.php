@@ -65,7 +65,7 @@ Route::get('/', function () {
 //商品登録表示
 Route::get('/admin/product/product_add','ProductController@product_addshow')->name('product.product_add');
 //商品登録
-Route::post('/admin/product/product_store','ProductController@exe_store')->name('product.product_store');
+Route::post('/admin/product_store','ProductController@exe_store')->name('product.product_store');
 
 
 //商品一覧、カテゴリー絞り込み、並び替え

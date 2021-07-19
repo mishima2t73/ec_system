@@ -5,7 +5,7 @@
     <div class="row justify-content-center" >
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">管理画面トップ</div>
+                <div class="card-header">ECショップ管理システム</div>
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">

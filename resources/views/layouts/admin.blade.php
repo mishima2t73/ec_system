@@ -43,7 +43,7 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{route('product.product_list')}}">商品一覧</a>
-                                <a class="dropdown-item" href="{{route('product.product_store')}}">商品登録</a>
+                                <a class="dropdown-item" href="{{route('product.product_add')}}">商品登録</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
