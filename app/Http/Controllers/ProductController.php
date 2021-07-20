@@ -23,6 +23,28 @@ class ProductController extends Controller
         //$id = Auth::id();
         return view('admin.home');
     }
+
+    public function product_index(Request $request)
+    {
+        $sessionUser=User::find($request->session()->get('user_id'));
+
+        if($request->session()->has('cartdata')){
+            $cartdata=array_values($request->session()->get('cartdata'));
+        
+        foreach($cartdata as $index =>$data){
+            $data['product_name']=$product[$index]->product_name;
+            $data['category_name']=$product[$index]['category']->category_name;
+            $data['price']=$product[$index]->price;
+            $data['itemprice']=$data['price']*$data['session_quantity'];
+        
+        unset($data);
+        }
+        return view('cart.cartlist',compact('sessionUser','cartdata','totalprice'));
+    }else{
+        return view('cart.no_cart_list',['user'=>Auth::user()]);
+        return view('cart.cartlist',compact('sessionUser','cartdata','totalprice'));
+    }
+}
     //list
     public function product_list(Request $request)
     {
@@ -33,10 +55,62 @@ class ProductController extends Controller
         //$products = product::all();
         $products = DB::table('products');
         $products = product::orderBy($sortname,$order)->paginate(8);
+        $product=product::find($sessionProductId);
         //$productspage = product::orderBy($sortname,'asc')->paginate(5);
         return view('admin/product/product_list',compact("products","sortname","order"));
     }
 
+    public function remove(Request $request){
+        $sessioncartdata=$request->session()->get('cartdata');
+
+        $removecartItem=[
+            ['session_products_id'=>$request->products_id,
+            'session_quantity=>$request->product_quantity']
+        ];
+        $removeCompletedcartdata=array_udiff($sessioncartdata,$removecarItem,function($sessioncartdata,$removecartItem){
+            $result1=$sessioncartdata['session_products_id']-$removecartItem['session_products_id'];
+            $reslut2=$sessioncartdata['session_quantity']-$removecartItem['session_quantity'];
+            $request->session()->put('cartdata',$removeCompletedcartdata);
+            $cartdata=$request->session()->get('cartdata');
+            if($request->session()->has('cartdata')){
+                return redirect()->route('cartlist.index');
+            }
+            return view('products.no_cart_list',['user'=>Auth::user()]);
+            return $result1+$result2;
+        });
+
+        $request->session()->put('cartdata',$removeCompletedcatdata);
+        $cartdata=$request->session()->get('cartdata');
+
+        if($request->session()->has('cartdata')){
+            return redirect()->route('cartlist.index');
+        }
+        return view('products.no_cart_list',['user'=>Auth::user()]);
+    }
+    public function store(Request $request){
+        $cartdata = $request->session()->get('cartdata');
+        $$carbonNow=carbon::now();
+
+        $order=new \App\Order;
+        $order->user_id=Auth::user()->id;
+        $order->order_date=$now;
+        $order->order_number=rand();
+        Auth::user()->orders()->save($order);
+        $savedOrder=Order::where('order_number',$order)->latest()->first();
+        $cavedOverId=$saveOrder->pluck('id')->toArray();
+
+        foreach($cartdata as $data){
+            $orderDetail = new \App\OrderDetail;
+            $orderDetail->product_id=data['session_prodocts_id'];
+            $orderDetail->order_id=$savedOverId[0];
+            $orderDetail->shipment_status_id=3;
+            $orderDetail->order_quantity=$data['session_quantity'];
+            $orderDetail->shipment_date=$now;
+            Auth::user()->orderDetail()->save($orderDetail);
+        }
+        $request->session()->forget('cartdata');
+        return view('products/purchase_completed',compact('order'));
+    }
     //data @param int $id 商品詳細
     public function product_data($id)
     {
@@ -87,6 +161,32 @@ class ProductController extends Controller
             'product'=>$product_data
         ]);
     }
+    public function addcart(Request $request){
+        $cartdata=[
+            'session_products_id'=>$request->products_id,
+            'session_quantity'=>$request->product_quentity,
+        ];
+        if(!$request->session()->has('cartdata')){
+            $request->session()->push('cartdata',$cartdata);
+        }else{
+            $sessioncartdata=$request->session()->get('cartdata');
+
+            $issameProductId=false;
+            foreach($sessiondata as $index=>$sessiondata){
+                if($sessiondata['session_products_id']===$cartdata['session_products_id']){
+                $issameproductId=true;
+                $quantity=$sessiondata['session_quentity']+$cartdata['session_quantity'];
+                $request->session()->put('cartdata.'.$index.'.session_quentity',$quantity);
+                break;
+            }
+        }
+        if($issameproductId===false){
+            $request->session()->push('cartdata',$cartdata);
+        }
+    }
+    $request->session()->put('users_id',($request->users_id));
+    return redirect()->route('cartlist.index');
+}
     //update
     public function product_update(ProductRequest $request){
         $id= $request->id;
