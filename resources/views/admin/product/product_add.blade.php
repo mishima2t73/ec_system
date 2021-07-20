@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 <div class ="container">
@@ -14,7 +14,7 @@
             <label for="name">商品名</label>
             <input id = "name" name = "name" type="text" class = "form-control">
             @if ($errors->has('name'))
-                <div class = "test-danger">
+                <div class = "alert alert-danger">
                     {{$errors->first('name')}}
                 </div>
             @endif
@@ -29,7 +29,7 @@
                     @endforeach
                 </select>
                 @if ($errors->has('maker'))
-                    <div class = "test-danger">
+                    <div class = "alert alert-danger">
                         {{$errors->first('maker')}}
                     </div>
                 @endif
@@ -38,7 +38,7 @@
                 <label for="model_id">型番</label>
                 <input id = "model_id" name = "model_id" type="text" class = "form-control">
                 @if ($errors->has('model_id'))
-                    <div class = "test-danger">
+                    <div class = "alert alert-danger">
                         {{$errors->first('model_id')}}
                     </div>
                 @endif
@@ -47,7 +47,7 @@
                 <label for="os">OS</label>
                 <input id = "os" type="text" name ="os" class = "form-control">
                 @if ($errors->has('os'))
-                    <div class = "test-danger">
+                    <div class = "alert alert-danger">
                         {{$errors->first('os')}}
                     </div>
                 @endif
@@ -60,7 +60,7 @@
                     <input id = "price" name = "price" type="text" class = "form-control">
                 </div>
                 @if ($errors->has('price'))
-                    <div class = "test-danger">
+                    <div class = "alert alert-danger">
                         {{$errors->first('price')}}
                     </div>
                 @endif
@@ -71,7 +71,7 @@
                     <input id = "stock" type="text" name = "stock" class = "form-control">
                 </div>
                 @if ($errors->has('stock'))
-                    <div class = "test-danger">
+                    <div class = "alert alert-danger">
                         {{$errors->first('stock')}}
                     </div>
                 @endif
@@ -83,7 +83,7 @@
                 <label for="cpu">CPU</label>
                     <input id = "cpu" name = "cpu" type="text" class = "form-control">
                 @if ($errors->has('cpu'))
-                    <div class = "test-danger">
+                    <div class = "alert alert-danger">
                         {{$errors->first('cpu')}}
                     </div>
                 @endif
@@ -92,7 +92,7 @@
                 <label for="memory">メモリ</label>               
                     <input id = "memory" name = "memory" type="text" class = "form-control">
                 @if ($errors->has('memory'))
-                    <div class = "test-danger">
+                    <div class = "alert alert-danger">
                         {{$errors->first('memory')}}
                     </div>
                 @endif
@@ -101,7 +101,7 @@
                 <label for="graphic">グラフィック</label>
                     <input id = "graphic" name = "graphic" type="text" class = "form-control">
                 @if ($errors->has('graphic'))
-                    <div class = "test-danger">
+                    <div class = "alert alert-danger">
                         {{$errors->first('graphic')}}
                     </div>
                 @endif
@@ -119,7 +119,7 @@
                 <label for="hdd_ssd_space">容量</label>
                     <input id = "hdd_ssd_space" name = "hdd_ssd_space" type="text" class = "form-control">
                 @if ($errors->has('hdd_ssd_space'))
-                    <div class = "test-danger">
+                    <div class = "alert alert-danger">
                         {{$errors->first('hdd_ssd_space')}}
                     </div>
                 @endif
@@ -128,7 +128,7 @@
                 <label for="display">ディスプレイ</label>
                     <input id = "display" name = "display" type="text" class = "form-control">
                 @if ($errors->has('display'))
-                    <div class = "test-danger">
+                    <div class = "alert alert-danger">
                         {{$errors->first('display')}}
                     </div>
                 @endif
@@ -137,7 +137,7 @@
                 <label for="drive">ドライブ</label>
                     <input id = "drive" name = "drive" type="text" class = "form-control">
                 @if ($errors->has('drive'))
-                    <div class = "test-danger">
+                    <div class = "alert alert-danger">
                         {{$errors->first('drive')}}
                     </div>
                 @endif
@@ -148,7 +148,7 @@
                 <label for="attached">付属品</label>
                     <input id = "attached" name = "attached" type="text" class = "form-control">
                 @if ($errors->has('attached'))
-                    <div class = "test-danger">
+                    <div class = "alert alert-danger">
                         {{$errors->first('attached')}}
                     </div>
                 @endif
@@ -174,7 +174,7 @@
             <label for="remarks">備考</label>
             <textarea  id="remarks" name = "remarks" class = "form-control"  rows="3"></textarea>
             @if ($errors->has('remarks'))
-                <div class = "test-danger">
+                <div class = "alert alert-danger">
                     {{$errors->first('remarks')}}
                 </div>
             @endif

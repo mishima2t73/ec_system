@@ -9,6 +9,7 @@ use App\categorylist;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
 
+
 class ProductController extends Controller
 {
     //ログイン確認処理？要確認
