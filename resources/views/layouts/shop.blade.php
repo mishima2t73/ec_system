@@ -21,7 +21,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body style="background-color:#cfd6e0">
+<body style="background-color:#e5e9ee">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -46,11 +46,9 @@
                                 メーカー
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{route('top',['category'=>'maker','subcategory' => 'Dell'])}}">Dell</a>
-                                <a class="dropdown-item" href="{{route('top',['category'=>'maker','subcategory' => 'Panasonic'])}}">Panasonic</a>
-                                <a class="dropdown-item" href="{{route('top',['category'=>'maker','subcategory' => 'Dynabook'])}}">Dynabook</a>
-                                <a class="dropdown-item" href="{{route('top',['category'=>'maker','subcategory' => 'Apple'])}}">Apple</a>
-                                <a class="dropdown-item" href="{{route('top',['category'=>'maker','subcategory' => 'iiyama'])}}">iiyama</a>
+                                @foreach ($makerlist as $item)
+                                <a class="dropdown-item" href="{{route('top',['category'=>'maker','subcategory' => $item->value])}}">{{$item->value}}</a>    
+                                @endforeach
                                 <a class="dropdown-item" href="{{route('top',['category'=>'maker','subcategory' => 'その他'])}}">その他</a>
                             </div>
                         </li>
@@ -70,10 +68,10 @@
                                 画面サイズ
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">11～12.5</a>
-                                <a class="dropdown-item" href="#">13～14</a>
-                                <a class="dropdown-item" href="#">15～15.6</a>
-                                <a class="dropdown-item" href="#">17～</a>
+                                <a class="dropdown-item" href="{{route('top',['category'=>'display','subcategory' => [11.0,13.0]])}}">11～12.5</a>
+                                <a class="dropdown-item" href="{{route('top',['category'=>'display','subcategory' => [13.0,14.0]])}}">13～14</a>
+                                <a class="dropdown-item" href="{{route('top',['category'=>'display','subcategory' => [15.0,16.0]])}}">15～15.6</a>
+                                <a class="dropdown-item" href="{{route('top',['category'=>'display','subcategory' => [17.0,30.0]])}}">17～</a>
                                 
                             </div>
                         </li>
@@ -83,11 +81,12 @@
                                 CPU
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Core i3</a>
-                                <a class="dropdown-item" href="#">Core i5</a>
-                                <a class="dropdown-item" href="#">Core i7</a>
+                                <a class="dropdown-item" href="{{route('top',['category'=>'cpu','subcategory' => "celeron"])}}">celeron</a>
+                                <a class="dropdown-item" href="{{route('top',['category'=>'cpu','subcategory' => "i3"])}}">Core i3</a>
+                                <a class="dropdown-item" href="{{route('top',['category'=>'cpu','subcategory' => "i5"])}}">Core i5</a>
+                                <a class="dropdown-item" href="{{route('top',['category'=>'cpu','subcategory' => "i7"])}}">Core i7</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Ryzen</a>
+                                <a class="dropdown-item" href="{{route('top',['category'=>'cpu','subcategory' => "AMD"])}}">Ryzen</a>
                                 
                             </div>
                         </li>
@@ -96,10 +95,11 @@
                                 HDD/SSD
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">～128GB</a>
-                                <a class="dropdown-item" href="#">128GB～256GB</a>
-                                <a class="dropdown-item" href="#">256GB～480GB</a>
-                                <a class="dropdown-item" href="#">480GB～</a>
+                                <a class="dropdown-item" href="{{route('top',['category'=>'hdd_ssd_space','subcategory' => [32,128]])}}">～128GB</a>
+                                <a class="dropdown-item" href="{{route('top',['category'=>'hdd_ssd_space','subcategory' => [129,256]])}}">128GB～256GB</a>
+                                <a class="dropdown-item" href="{{route('top',['category'=>'hdd_ssd_space','subcategory' => [256,480]])}}">256GB～480GB</a>
+                                <a class="dropdown-item" href="{{route('top',['category'=>'hdd_ssd_space','subcategory' => [480,0]])}}">480GB～</a>
+                                <a class="dropdown-item" href="{{route('top',['category'=>'hdd_ssd_space','subcategory' => [1,20]])}}">1TB～</a>
                                 
                             </div>
                         </li>
@@ -113,7 +113,7 @@
                             <img src="/icon/outline_shopping_cart_black_24dp.png" alt="cart">
                             </span></a>
                         @if (Auth()->check())
-                        <a class="nav-link" href="/mypage/{{ Auth::user()->id}}/home">
+                        <a class="nav-link" href="{{route('user_mypage')}}">
                             Mypage
                         </a>
                         @endif
@@ -131,7 +131,7 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ Auth::user()->name }} さん<span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -147,6 +147,7 @@
                                 </div>
                             </li>
                         @endguest
+                        
                     </ul>
                 </div>
             </div>

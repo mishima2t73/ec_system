@@ -5,37 +5,57 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\product;
 use Illuminate\Http\Request;
+
 use App\Http\Requests\ProductRequest;
 
 class ShopController extends Controller
 {
+
     //top
     public function topview(Request $request){
+        /*if (!$request->session()->exists('category_list')){
+            $makerlist = DB::table('categorylist')->where('category','maker')->get('value');
+            $request->session()->put('category_list',$makerlist);
+        }*/
+
         $category = $request->input('category', 'default');
-        $subcategory = $request->input('subcategory', '');
+        $subcategory = $request->input('subcategory', 'default');
         $sortname = $request->input('sortname','id');
         $order = $request->input('order','desc');
-        //dd($subcategory);
+        //$makerlist = DB::table('makerlist')->where('display','1')->get('maker');
+        $makerlist = DB::table('categorylist')->where('category','maker')->get('value');
+
+        //dd($subcategory,$makerlist);
         if($category == "default"){
-            $products = DB::table('products');
+            //$products = DB::table('products');
             $products = Product::orderBy($sortname,$order)
                                     ->paginate(9);
         }
-        if($category == "maker" || $category == "CPU" ){
+        if($category == "maker"){
             $products = Product::where($category,$subcategory)
                                 ->orderBy($sortname,$order)
                                 ->paginate(9);
         }
-        if($category == "price" || $category == "display || $category == hdd_ssd" ){
+        if($category == "price" || $category == "display" || $category == "hdd_ssd_space" ){
             $products = Product::wherebetween($category,$subcategory)
                                 ->orderBy($sortname,$order)
                                 ->paginate(9);
-            $subcategory = "pricebet";
+            //$subcategory = "sub";
         }
+        if($category == "cpu" ){
+            $products = Product::where($category,'like',"%$subcategory%")
+                                ->orderBy($sortname,$order)
+                                ->paginate(9);
+        //dd($products);           
+        }
+        //dd($products->isEmpty());
+        
+
         //dd($products);                
         
-        return view('/shop/top',compact("products","sortname","order","category","subcategory"));
+        return view('/shop/top',compact("products","sortname","order","category","subcategory","makerlist"));
     }
+
     public function shop_category(Request $request){
         
         return view('/shop/top',compact("products","sortname","order"));      
@@ -43,10 +63,12 @@ class ShopController extends Controller
     
     //商品詳細 Route::get('shop/product/{id}','ShopController@showproduct_data')->name('showproduct_data');
     public function showproduct_data($id){
+        //$makerlist = DB::table('makerlist')->where('display','1')->get('maker');
+        $makerlist = DB::table('categorylist')->where('category','maker')->get('value');
+        //dd($makerlist,$categorylist);
         $product_data = product::find($id);
         return view('shop/shop_product_data',[
-            'product'=>$product_data
-        ]);
+            'product'=>$product_data,'makerlist'=>$makerlist]);
     }
      /*
         if ($request->session()->has('id')){
@@ -77,45 +99,23 @@ class ShopController extends Controller
         return redirect('/shop/cart');
     }
 
-    public function index(Request $request)
-    {
-        $sessionUser=User::find($request->session()->get('users_id'));
-        if($request->session()->has('cartdata')){
-        $cartdata=array_values($request->session()->get('cartdata'));
-        }
-
-        if(!empty($cartdata)){
-            $sessionProductsId=array_column($cartdata,'session_products_id');
-            $product=Product::with('category')->find($sessionProductsId);
-
-            foreach($cartdata as $index=>&$data){
-                $data['product_name']=$product[$index]->product_name;
-                $data['category_name']=$product[$index]['category']->category_name;
-                $data['price']=$product[$index]->price;
-                $data['itemPrice']=$data['price']*$data['session_quentity'];
-            }
-            unset($data);
-
-            return view('product.cartlist',compact('sessionUser','cartdata','totalPrice'));
-        }else{
-            return view('products.no_cart_list',['user'=>Auth::user()]);
-        }
-    }
-    /*public function shop_cartshow(Request $request){
-        dd($request->session()->all());
-        dd($cartlist);
+    public function shop_cartshow(Request $request){
+        //dd($request->session()->all());
+        //dd($cartlist);
         $cartdata= $request->session()->get('cartlist');
+        //dd($cartdata);
         $SessionProductId = array_column($cartdata, 'SessionProductId');
         $SessionProductQuantity = array_column($cartdata, 'SessionProductQuantity');
-        dd($cart);
-       $products = product::find();
-       return view('/shop/cart',["cartdata"=>$cartdata]);
+        //dd($cart);
+       //$products = product::find();
+        return view('/shop/cart',["cartdata"=>$cartdata]);
     }
-    */
     public function company_show(){
-        return view('/shop/company');
+        $makerlist = DB::table('categorylist')->where('category','maker')->get('value');
+        return view('/shop/company',compact('makerlist'));
     }
     public function shopping_info(){
-        return view('/shop/shop_info');
+        $makerlist = DB::table('categorylist')->where('category','maker')->get('value');
+        return view('/shop/shop_info',compact('makerlist'));
     }
 }

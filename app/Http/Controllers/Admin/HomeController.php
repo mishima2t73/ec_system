@@ -131,9 +131,6 @@ class HomeController extends Controller
         return view('admin.sale.detail',compact('sales'));
     }
 
-
-
-
     
     public function test_buypage()
     {

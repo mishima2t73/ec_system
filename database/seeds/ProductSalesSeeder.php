@@ -17,7 +17,7 @@ class ProductSalesSeeder extends Seeder
         DB::table('product_sales_details')->truncate(); 
         $faker = Faker\Factory::create('ja_JP');
         $start = Carbon::create("2021","4","1" );
-        $end = Carbon::create("2021","7","5");
+        $end = Carbon::create("2021","7","14");
         $min = strtotime($start);
         $max = strtotime($end);
         for ($i = 0; $i < 100;$i++){
@@ -29,6 +29,7 @@ class ProductSalesSeeder extends Seeder
             $date = rand($min, $max);
             // タイムスタンプ => Y-m-d に変換    
             $date = date('Y-m-d', $date);
+            
             $sales_quantity = $faker->randomElement($dept);
             $total_price = 0;
             //$total_quantity =0;合計個数未使用

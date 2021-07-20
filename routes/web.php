@@ -72,7 +72,7 @@ Route::post('/admin/product/product_store','ProductController@exe_store')->name(
 Route::get('/admin/product/product_list','ProductController@product_list')->name('product.product_list');
 
 //商品詳細
-Route::get('/admin/product/{id}','ProductController@product_data')->name('product.product_data');
+Route::get('/admin/product/list/{id}','ProductController@product_data')->name('product.product_data');
 
 //商品更新ページ表示
 Route::get('/admin/product/update/{id}','ProductController@product_updateshow')->name('product_updateshow');
@@ -83,7 +83,10 @@ Route::post('/admin/product/update','ProductController@product_update')->name('p
 //商品削除
 Route::post('/admin/product/delete/{id}','ProductController@product_delete')->name('product_delete');
 //  return redirect('/product/product_list');
-  
+//商品登録設定
+Route::get('/admin/product/setting','ProductController@product_setting_show')->name('product_setting');
+Route::post('/admin/product/setting','ProductController@product_setting_add')->name('product_list_add');
+Route::post('/admin/product/setting/delete','ProductController@product_setting_delete')->name('product_list_delete');
 //スタッフ一覧
 Route::get('/admin/staff/staff_list','StaffsController@staff_list')->name('staff_list');
 
@@ -134,12 +137,23 @@ Route::get('shop/shopping_info/','ShopController@shopping_info')->name('shop_inf
 //検索表示
 Route::get('shop/kensaku','KensakuController@kensaku_index')->name('kensaku_index');
 
-
+//ユーザー　マイページ
+Route::group(['middleware' => 'auth:user'],function(){
+  Route::get('user/mypage','User\HomeController@index')->name('user_mypage');
+  Route::get('user/mypage/account','User\HomeController@account_show')->name('user_account');
+  Route::get('user/mypage/account_form','User\HomeController@account_form')->name('user_account_form');
+  Route::post('user/mypage/account_form','User\HomeController@account_update')->name('user_account_update');
+  Route::get('user/mypage/password_form','User\HomeController@password_form')->name('user_password_form');
+  Route::get('user/mypage/password_form_up','User\HomeController@user_password_update')->name('user_password_update');
+  Route::get('user/mypage/address','User\HomeController@address_up_form')->name('user_address');
+  Route::post('user/mypage/address_up','User\HomeController@address_update')->name('user_address_update');
+  
+});
 
 //管理者用登録ルート
 Route::group(['middleware' => ['auth:admin', 'can:admin']], function () {
   //ユーザー登録
-  Route::get('/admin/staff/staff_add','Admin\Auth\RegisterController@showRegistrationForm')->name('staff_registshow');
+Route::get('/admin/staff/staff_add','Admin\Auth\RegisterController@showRegistrationForm')->name('staff_registshow');
   //Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-  Route::get('/admin/staff/staff_add','Admin\Auth\RegisterController@create')->name('staff_regist');
+Route::get('/admin/staff/staff_add','Admin\Auth\RegisterController@create')->name('staff_regist');
 });

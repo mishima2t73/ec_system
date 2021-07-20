@@ -2,3 +2,15 @@ Laravel Framework 6.20.27
 
 一部だけマイグレーションしたい時
 php artisan migrate:refresh  --step=1 --path=/database/migrations/ファイル名
+
+php artisan migrate:refresh  --step=1 --path=\database\migrations\2021_07_06_155258_create_user_adress.php
+
+一部だけseed実行したい時
+ php artisan db:seed --class=UserTableSeeder
+
+user_address_update
+
+メーカー種類登録
+スペック登録
+
+Failed opening required 'C:\xampp\htdocs\laravel\@sol_ec_system/\database\migrations\makeSeeder.php' (include_path='C:\xampp\php\PE

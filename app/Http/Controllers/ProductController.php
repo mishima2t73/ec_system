@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\product;
+use App\categorylist;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
 
@@ -120,15 +121,15 @@ class ProductController extends Controller
     //add show
     public function product_addshow()
     {
-        return view('admin/product/product_add');
+        $makerlist = DB::table('categorylist')->where('category','maker')->get('value');
+        $oslist = DB::table('categorylist')->where('category','os')->get('value');
+        return view('admin/product/product_add',compact('makerlist','oslist'));
     }
     //product_store ProductRequest
-    public function exe_store(ProductRequest $request)
-    {
+    public function exe_store(ProductRequest $request){
         if ($request){
             return view('admin.home');
         }
-        
         $product = $request->all();
         if($file = $request->uploadfile){
             $file_name = time() . $file->getClientOriginalName();
@@ -209,16 +210,47 @@ class ProductController extends Controller
         $pdata->fill($fdata)->save();
         //product::update($id);
      return redirect('product/'.$id);
-
+ 
     }
     //delete
     public function product_delete($id){
         product::destroy($id);
-        return redirect('admin//product/product_list');
+        return redirect('admin/product/product_list');
     }
+    public function product_setting_show(){
+        $makerlist = DB::table('categorylists')->where('category','maker')->get();
+        $oslist = DB::table('categorylists')->where('category','os')->get();
+        //dd($makerlist,$oslist);
+        return view('admin/product/product_setting',compact('makerlist','oslist'));
+    }
+    public function product_setting_add(Request $request){
+        $category = $request->all();
+        $count = DB::table('categorylists')->where('category',$request->category)->count();
+        $category['sort']= $count;
+        //dd($category,$count);
+        //$value = $request->input('value');
+        $category_list =new \App\categorylist;
+        
+            \DB::beginTransaction();
+                categorylist::create($category);
+            \DB::commit();
+        return redirect('/admin/product/setting');
+    }
+    public function product_setting_delete(Request $request){
+        //dd($request);
+        categorylist::destroy($request->id);
+        return redirect('admin/product/setting');
+    }
+
+    public function product_setting_sort(){
+        //並び替え
+        //ずれるカテゴリー
+        //$request->u_id;
+    }
+    
     //wordpressテスト　Route::get('/test', 'ProductController@wptest')->name('wptest');
     public function wptest(){
-        return view('admin//product/product_test');
+        return view('admin/product/product_test');
     }
 
 }

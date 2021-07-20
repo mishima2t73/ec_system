@@ -11,21 +11,21 @@
         <ul>
             <h3>並べ替え</h3>
             <li class="list-group-item">
-                <a href="/top?category={{$category}}&subcategory={{$subcategory}}&sortname=id&order={{$order}}">商品ID</a>
+                <a href="{{route('top',['category'=>$category,'subcategory'=>$subcategory,'sortname'=>'id'])}}">商品ID</a>
             </li>
             <li class="list-group-item">
-                <a href="/top?category={{$category}}&subcategory={{$subcategory}}&sortname=name&order={{$order}}">商品名</a>
+                <a href="{{route('top',['category'=>$category,'subcategory'=>$subcategory,'sortname'=>'name'])}}">商品名</a>
             </li>
             <li class="list-group-item">
-                <a href="/top?category={{$category}}&subcategory={{$subcategory}}&sortname=price&order={{$order}}">価格</a>
+                <a href="{{route('top',['category'=>$category,'subcategory'=>$subcategory,'sortname'=>'price'])}}">価格</a>
             </li>
         </ul>
         <ul>
             <li class="list-group-item">
-                <a href="/top?category={{$category}}&subcategory={{$subcategory}}&sortname={{$sortname}}&order=asc">昇順</a>
+                <a href="{{route('top',['category'=>$category,'subcategory'=>$subcategory,'sortname'=>$sortname,'order'=>'asc'])}}">昇順</a>
             </li>
             <li class="list-group-item">
-                <a href="/top?category={{$category}}&subcategory={{$subcategory}}&sortname={{$sortname}}&order=desc">降順</a>
+                <a href="{{route('top',['category'=>$category,'subcategory'=>$subcategory,'sortname'=>$sortname,'order'=>'desc'])}}">降順</a>
             </li>
         
         <li class="list-group-item">
@@ -40,6 +40,25 @@
 <div class = "col">
     <div class ="container">
         <h3>中古PC </h3>
+        <div>
+            {{$category}}
+        </div>
+        <div class = "sort">
+            @if ($sortname == 'id')
+            商品ID
+        @elseif($sortname == 'name')
+            名前
+        @else
+            価格
+        @endif
+
+        @if ($order == "asc")
+            昇順
+        @else
+            降順
+        @endif
+        
+        </div>
         @php
             $c = 0;
         @endphp
@@ -73,7 +92,12 @@
     <div class="">
         <div class = "row ">
             <div class = "col-md-5 offset-md-5 align-items-center">
-                {{$products->appends(['sort'=>$sortname,'order'=>$order])->links()}}
+                @if ($products->isEmpty()== false)
+                {{$products->appends(['sort'=>$sortname,'order'=>$order])->links()}}    
+                @else
+                該当する商品がありません。
+                @endif
+                
             </div>
         </div>
     </div>
