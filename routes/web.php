@@ -114,9 +114,15 @@ Route::get('shop/product/{id}','ShopController@showproduct_data')->name('showpro
 //カート
 Route::post('shop/cartin','ShopController@shop_cartin')->name('shop_cartin');
 //カート表示
-Route::get('shop/cart','ShopController@shop_cartshow')->name('show_cart');
-Route::get('shop/cartlist','ShopContrller@cartData')->name('cartData');
-Route::get('shop/cartlist','ShopController@cartlist')->name('cartlist');
+//Route::View('/cartlist','ShopCaontroller@cartlist')->name('cartlist');
+
+Route::get('ProductController/product_index','productController@index')->name('cartlist');
+Route::view('/purchaseCompleted','products/purchase_completed');
+
+Route::resource('cartlist','ProductController',['only'=>['index']]);
+Route::post('productInfo/addCart/cartListRemove','ProductController@remove')->name('itemRemove');
+Route::post('productinfo/addCart','ProductController@addCart')->name('addcart.post');
+Route::post('productinfo/addCart/orderFinalize','ProductController@store')->name('orderFinalize');
 //お問い合わせ
 Route::get('shop/contact/', 'ContactController@input')->name('shop_contact'); // 入力画面
 Route::patch('shop/contact/', 'ContactController@confirm')->name('shop_confirm'); // 確認画面

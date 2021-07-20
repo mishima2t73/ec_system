@@ -77,16 +77,41 @@ class ShopController extends Controller
         return redirect('/shop/cart');
     }
 
-    public function shop_cartshow(Request $request){
-        //dd($request->session()->all());
-        //dd($cartlist);
+    public function index(Request $request)
+    {
+        $sessionUser=User::find($request->session()->get('users_id'));
+        if($request->session()->has('cartdata')){
+        $cartdata=array_values($request->session()->get('cartdata'));
+        }
+
+        if(!empty($cartdata)){
+            $sessionProductsId=array_column($cartdata,'session_products_id');
+            $product=Product::with('category')->find($sessionProductsId);
+
+            foreach($cartdata as $index=>&$data){
+                $data['product_name']=$product[$index]->product_name;
+                $data['category_name']=$product[$index]['category']->category_name;
+                $data['price']=$product[$index]->price;
+                $data['itemPrice']=$data['price']*$data['session_quentity'];
+            }
+            unset($data);
+
+            return view('product.cartlist',compact('sessionUser','cartdata','totalPrice'));
+        }else{
+            return view('products.no_cart_list',['user'=>Auth::user()]);
+        }
+    }
+    /*public function shop_cartshow(Request $request){
+        dd($request->session()->all());
+        dd($cartlist);
         $cartdata= $request->session()->get('cartlist');
         $SessionProductId = array_column($cartdata, 'SessionProductId');
         $SessionProductQuantity = array_column($cartdata, 'SessionProductQuantity');
-        //dd($cart);
-       //$products = product::find();
-      // return view('/shop/cart',["cartdata"=>$cartdata]);
+        dd($cart);
+       $products = product::find();
+       return view('/shop/cart',["cartdata"=>$cartdata]);
     }
+    */
     public function company_show(){
         return view('/shop/company');
     }
