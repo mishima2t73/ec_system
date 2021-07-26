@@ -14,5 +14,4 @@ class product extends Model
      //if (!empty($params['maker']))$query->where('maker','dell');
 
  }   
- protected $table='products';
 }

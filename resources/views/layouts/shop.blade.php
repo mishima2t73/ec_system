@@ -109,7 +109,7 @@
                     </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        <a class="nav-link" href="{{route('cartlist')}}"><span class="material-icons-outlined">
+                        <a class="nav-link" href="{{route('show_cart')}}"><span class="material-icons-outlined">
                             <img src="/icon/outline_shopping_cart_black_24dp.png" alt="cart">
                             </span></a>
                         @if (Auth()->check())

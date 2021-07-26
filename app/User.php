@@ -9,10 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use Notifiable;
-    public function orders()
-    {
-        return $this->hasMany('App\order');
-    }
+
     /**
      * The attributes that are mass assignable.
      *
