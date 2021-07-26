@@ -23,7 +23,7 @@ class ShopController extends Controller
         $sortname = $request->input('sortname','id');
         $order = $request->input('order','desc');
         //$makerlist = DB::table('makerlist')->where('display','1')->get('maker');
-        $makerlist = DB::table('categorylist')->where('category','maker')->get('value');
+        $makerlist = DB::table('categorylists')->where('category','maker')->get('value');
 
         //dd($subcategory,$makerlist);
         if($category == "default"){
