@@ -103,8 +103,8 @@ Route::get('admin/sales_analysis','Admin\HomeController@sales_analysis')->name('
 //明細
 Route::get('admin/sales/{sales_number}','Admin\HomeController@product_sale_detail')->name('showproduct_data');
 //excel
-Route::get('admin/excel/export','ExcelController@export');
-Route::get('admin/excel/index', 'ExcelController@index');
+Route::get('admin/excel/export','ExcelController@export')->name("staff_export");
+Route::get('admin/excel/index', 'ExcelController@index')->name('excel_index');
 Route::post('admin/excel/import', 'ExcelController@import')->name('excel_import');
 
 //Route::get('admin/excel/test', 'ExcelController@test')->name('excel_test');

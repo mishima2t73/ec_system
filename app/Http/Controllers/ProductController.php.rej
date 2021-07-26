@@ -1,0 +1,30 @@
+diff a/app/Http/Controllers/ProductController.php b/app/Http/Controllers/ProductController.php	(rejected hunks)
+@@ -23,6 +23,28 @@
+         //$id = Auth::id();
+         return view('admin.home');
+     }
++
++    public function product_index(Request $request)
++    {
++        $sessionUser=User::find($request->session()->get('user_id'));
++
++        if($request->session()->has('cartdata')){
++            $cartdata=array_values($request->session()->get('cartdata'));
++        
++        foreach($cartdata as $index =>$data){
++            $data['product_name']=$product[$index]->product_name;
++            $data['category_name']=$product[$index]['category']->category_name;
++            $data['price']=$product[$index]->price;
++            $data['itemprice']=$data['price']*$data['session_quantity'];
++        
++        unset($data);
++        }
++        return view('cart.cartlist',compact('sessionUser','cartdata','totalprice'));
++    }else{
++        return view('cart.no_cart_list',['user'=>Auth::user()]);
++        return view('cart.cartlist',compact('sessionUser','cartdata','totalprice'));
++    }
++}
+     //list
+     public function product_list(Request $request)
+     {

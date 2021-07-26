@@ -76,6 +76,13 @@
                                     </button>
                                 </div>
                             </div>
+                            <h3 class="h3 mt-3">各種データ管理</h3>
+                            <div class="row">
+                                <div class="col-sm-8"></div>
+                                <button type="submit" class="btn btn-secondary m-1" onclick="location.href='{{ route('excel_index') }}'">
+                                    エクスポート・インポート
+                                </button>
+                            </div>
                         </div>
                         <div class = "col-6">
                             <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
