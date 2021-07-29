@@ -1,20 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
-use App\Admin;
+namespace App\Http\Controllers\Admin;
+use App\User;
 use Illuminate\Http\Request;
 
-class StaffsController extends Controller
+class Users_adminController extends Controller
 {
-    //ログイン確認処理？要確認
     public function __construct()
     {
         $this->middleware('auth:admin');
         
     }
-
-
-    public function staff_list(Request $request){
+    public function user_list(Request $request){
         //$sortname = "created_at";
         if($request->sortname){
             $sortname = $request->sortname;    
@@ -28,9 +25,9 @@ class StaffsController extends Controller
         }
         else{$order = "asc";}
         //$staffs = User::all();
-        $staffs = Admin::orderBy($sortname,$order)->paginate(10);
+        $users = User::orderBy($sortname,$order)->paginate(10);
         //$productspage = product::orderBy($sortname,'asc')->paginate(5);
         //return view('product/product_list',compact("products","sortname","order"));
-        return view('admin/staff/staff_list',compact("staffs","sortname","order"));
+        return view('admin/user/user_list',compact("users","sortname","order"));
     }
 }

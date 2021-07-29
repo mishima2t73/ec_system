@@ -76,12 +76,21 @@
                                     </button>
                                 </div>
                             </div>
+                            <h3 class ="h3 mt-3">顧客関連</h3>
+                            <div class="row">
+                                <div class="col-sm-5" style="padding-right: 10px">
+                                    <button type="submit" class="btn btn-secondary m-1"  onclick="location.href='{{ route('user_list') }}'">
+                                        顧客一覧
+                                    </button>
+                                </div>
+                            </div>
                             <h3 class="h3 mt-3">各種データ管理</h3>
                             <div class="row">
-                                <div class="col-sm-8"></div>
+                                <div class="col-sm-8">
                                 <button type="submit" class="btn btn-secondary m-1" onclick="location.href='{{ route('excel_index') }}'">
                                     エクスポート・インポート
                                 </button>
+                                </div>
                             </div>
                         </div>
                         <div class = "col-6">

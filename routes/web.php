@@ -90,6 +90,7 @@ Route::post('/admin/product/setting/delete','ProductController@product_setting_d
 //スタッフ一覧
 Route::get('/admin/staff/staff_list','StaffsController@staff_list')->name('staff_list');
 
+Route::get('/admin/user/user_list','Admin\HomeController@user_list')->name('user_list');
 //配送設定一覧
 //Route::get('delivery/setting','AdminContoroller@show_setting')->name('setting');
 
@@ -103,10 +104,17 @@ Route::get('admin/sales_analysis','Admin\HomeController@sales_analysis')->name('
 //明細
 Route::get('admin/sales/{sales_number}','Admin\HomeController@product_sale_detail')->name('showproduct_data');
 //excel
-Route::get('admin/excel/export','ExcelController@export')->name("staff_export");
 Route::get('admin/excel/index', 'ExcelController@index')->name('excel_index');
-Route::post('admin/excel/import', 'ExcelController@import')->name('excel_import');
-
+Route::post('admin/excel/export_s','ExcelController@staff_export')->name("staff_export");
+Route::post('admin/excel/import_s', 'ExcelController@staff_import')->name('staff_import');
+Route::post('admin/excel/export_p','ExcelController@product_export')->name("product_export");
+Route::post('admin/excel/import_p', 'ExcelController@product_import')->name('product_import');
+Route::get('admin/excel/export_ps','ExcelController@product_sales_export')->name("product_sales_export");
+Route::post('admin/excel/import_ps', 'ExcelController@product_sales_import')->name('product_sales_import');
+Route::get('admin/excel/export_psd','ExcelController@product_sales_details_export')->name("product_sales_details_export");
+Route::post('admin/excel/import_psd', 'ExcelController@product_sales_detailsimport')->name('product_sales_details_import');
+Route::get('admin/excel/export_c','ExcelController@category_list_export')->name("category_list_export");
+Route::post('admin/excel/import_c', 'ExcelController@category_list_import')->name('category_list_import');
 //Route::get('admin/excel/test', 'ExcelController@test')->name('excel_test');
 //test購入ページ表示
 Route::get('/test_buy','Admin\HomeController@test_buypage')->name('testbuypage');
