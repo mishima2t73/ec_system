@@ -40,7 +40,7 @@ class ExcelController extends Controller
     public function product_export(Request $request)
     {
         $format = $request->input("exformat");
-        return Excel::download(new ProductExport,'products.'.$format);
+        return Excel::download(new ProductsExport,'products.'.$format);
         //return Excel::download(new StaffExport,'staffs.csv');
 
     }

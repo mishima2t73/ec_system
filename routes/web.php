@@ -107,8 +107,10 @@ Route::get('admin/sales/{sales_number}','Admin\HomeController@product_sale_detai
 Route::get('admin/excel/index', 'ExcelController@index')->name('excel_index');
 Route::post('admin/excel/export_s','ExcelController@staff_export')->name("staff_export");
 Route::post('admin/excel/import_s', 'ExcelController@staff_import')->name('staff_import');
+
 Route::post('admin/excel/export_p','ExcelController@product_export')->name("product_export");
 Route::post('admin/excel/import_p', 'ExcelController@product_import')->name('product_import');
+
 Route::get('admin/excel/export_ps','ExcelController@product_sales_export')->name("product_sales_export");
 Route::post('admin/excel/import_ps', 'ExcelController@product_sales_import')->name('product_sales_import');
 Route::get('admin/excel/export_psd','ExcelController@product_sales_details_export')->name("product_sales_details_export");
