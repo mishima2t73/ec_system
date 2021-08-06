@@ -111,11 +111,11 @@ Route::post('admin/excel/import_s', 'ExcelController@staff_import')->name('staff
 Route::post('admin/excel/export_p','ExcelController@product_export')->name("product_export");
 Route::post('admin/excel/import_p', 'ExcelController@product_import')->name('product_import');
 
-Route::get('admin/excel/export_ps','ExcelController@product_sales_export')->name("product_sales_export");
+Route::post('admin/excel/export_ps','ExcelController@product_sales_export')->name("product_sales_export");
 Route::post('admin/excel/import_ps', 'ExcelController@product_sales_import')->name('product_sales_import');
-Route::get('admin/excel/export_psd','ExcelController@product_sales_details_export')->name("product_sales_details_export");
+Route::post('admin/excel/export_psd','ExcelController@product_sales_details_export')->name("product_sales_details_export");
 Route::post('admin/excel/import_psd', 'ExcelController@product_sales_detailsimport')->name('product_sales_details_import');
-Route::get('admin/excel/export_c','ExcelController@category_list_export')->name("category_list_export");
+Route::post('admin/excel/export_c','ExcelController@category_list_export')->name("category_list_export");
 Route::post('admin/excel/import_c', 'ExcelController@category_list_import')->name('category_list_import');
 //Route::get('admin/excel/test', 'ExcelController@test')->name('excel_test');
 //test購入ページ表示
